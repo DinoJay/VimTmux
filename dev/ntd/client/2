@@ -1,0 +1,18 @@
+<head>
+  <title>ntd</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  <!--{{> vis}}-->
+  {{> pack}}
+  {{> vis}}
+</body>
+
+<template name="vis">
+  <div id="vis"></div>
+</template>
+
+<template name="pack">
+  <div id="pack"></div>
+</template>

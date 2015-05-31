@@ -22,7 +22,6 @@ Plugin 'Valloric/YouCompleteMe'
 " color
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Slava/vim-colors-tomorrow'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
 " JSX Syntax highlighting
 Plugin 'mxw/vim-jsx'
@@ -31,6 +30,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'Raimondi/delimitMate'
 "Plugin 'jiangmiao/auto-pairs'
 Plugin 'scrooloose/nerdcommenter'
+
 " Indentation Highlighting
 Plugin 'Yggdroot/indentLine'
 Plugin 'marijnh/tern_for_vim'
@@ -39,11 +39,11 @@ Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 
 Plugin 'Valloric/MatchTagAlways'
-" Plugin 'sukima/xmledit'
 
 " stylesheet syntax highlighting
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
+Plugin 'mustache/vim-mustache-handlebars'
 
 Plugin 'godlygeek/tabular'
 
@@ -53,11 +53,42 @@ Plugin 'EinfachToll/DidYouMean'
 " smart pairs, easily select closures of brackets
 Plugin 'gorkunov/smartpairs.vim'
 Plugin 'tpope/vim-surround'
+" repeat for plugins
+Plugin 'tpope/vim-repeat'
+
 " color highlighting
 Plugin 'chrisbra/Colorizer'
 
-" Meteor start
+" Meteor
 Plugin 'Slava/vim-spacebars'
+
+" ultisnips start
+" Track the engine.
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+Plugin 'cmather/vim-meteor-snippets'
+
+" js beautify
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
+map <c-f> :call JsBeautify()<cr>
+" or
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" ultisnips end
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -78,6 +109,7 @@ filetype on
 " they might help. YCM gives you popups and splits by default that
 " some people might not like, so these should tidy it up a bit for you.
 
+" Autocomplete
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
@@ -110,9 +142,10 @@ nmap <C-t> :TagbarToggle<CR>
 set term=screen-256color
 
 set t_Co=256
-syntax on
+let g:tomorrow_termcolors=256
+syntax enable
 set background=dark
-colorscheme distinguished
+colorscheme tomorrow
 
 " show whitespace
 set list
@@ -146,26 +179,11 @@ function! TrimWhiteSpace()
     %s/\s\+$//e
 endfunction
 
-" copy to end of line
-map Y y$
-
 nnoremap <silent> <Leader>rts :call TrimWhiteSpace()<CR>
 autocmd FileWritePre    * :call TrimWhiteSpace()
 autocmd FileAppendPre   * :call TrimWhiteSpace()
 autocmd FilterWritePre  * :call TrimWhiteSpace()
 autocmd BufWritePre     * :call TrimWhiteSpace()
-
-" disable arrow keys in normal mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-" disable Ex mode
-map Q <Nop>
-
-" rename all words under cursor
-:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " for copying painless
 function! WrapForTmux(s)
@@ -198,5 +216,32 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \ 'javascript' : 1,
-    \}
+\}
 
+" disable arrow keys in normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" copy to end of line
+map Y y$
+
+" disable Ex mode
+map Q <Nop>
+
+" rename all words under cursor
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
+" highlight crusor
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+
+" disable caps lock
+" Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
+for c in range(char2nr('A'), char2nr('Z'))
+  execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
+  execute 'lnoremap ' . nr2char(c) . ' ' . nr2char(c+32)
+endfor
+" Kill the capslock when leaving insert mode.
+autocmd InsertLeave * set iminsert=0

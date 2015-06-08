@@ -23,6 +23,8 @@ Plugin 'Valloric/YouCompleteMe'
 " color
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Slava/vim-colors-tomorrow'
+Plugin 'sheerun/vim-wombat-scheme'
+
 Plugin 'pangloss/vim-javascript'
 " JSX Syntax highlighting
 Plugin 'mxw/vim-jsx'
@@ -180,6 +182,10 @@ autocmd BufWritePre     * :call TrimWhiteSpace()
 " expand region
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" copy into global clipboard
+set guioptions+=a
+set clipboard=unnamedplus
 
 " for copying painless
 function! WrapForTmux(s)

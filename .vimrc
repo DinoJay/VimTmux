@@ -32,8 +32,9 @@ Plugin 'jelera/vim-javascript-syntax'
 
 Plugin 'Raimondi/delimitMate'
 "Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-commentary'           " Comment things out
+Plugin 'tpope/vim-commentary' " Comment things out
 
+Plugin 'kien/ctrlp.vim' "fuzzy finder
 
 Plugin 'terryma/vim-expand-region'
 " Indentation Highlighting

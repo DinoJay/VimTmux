@@ -37,6 +37,23 @@ Meteor.visUtils.pre_process_nodes = function(node, generation) {
             node.children = [node.partner];
         }
     }
+
+    //if (node.apprentices) {
+        //console.log("node", nodes);
+        //node.apprentices.forEach(function(v) {
+            //var appr = {
+              //name: v,
+              //generation: 1
+            //};
+            //if (node.children) {
+                //console.log("v", v);
+                //node.children.push(appr);
+            //} else {
+                //node.children = [v];
+            //}
+        //});
+    //}
+
     if (node.children) { // Making a shallow child copy
         var itself = {};
         for (var k in node) {

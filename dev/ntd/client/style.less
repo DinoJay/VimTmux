@@ -53,3 +53,55 @@ circle.miniature.filled_with_img {
 .node--leaf {
   pointer-events: none;
 }
+
+.mesh {
+  fill: none;
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+.start {
+  fill: none;
+  stroke: brown;
+}
+
+.end {
+  fill: none;
+  stroke: steelblue;
+}
+text {
+  font-size: 11px;
+  pointer-events: none;
+}
+
+text.parent {
+  fill: #1f77b4;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #999;
+  pointer-events: all;
+}
+
+circle.parent {
+  fill: #1f77b4;
+  fill-opacity: .1;
+  stroke: steelblue;
+}
+
+circle.parent:hover {
+  stroke: #ff7f0e;
+  stroke-width: .5px;
+}
+
+circle.child {
+  pointer-events: none;
+}
+
+path.child-branch {
+  fill: none;
+  stroke-width: 1.5px;
+  stroke-dasharray: 5, 5;
+  stroke-opacity: .5;
+}

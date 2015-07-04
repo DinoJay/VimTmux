@@ -20,15 +20,19 @@ Plugin 'tpope/vim-sensible'
 "Plugin 'sheerun/vimrc'
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
-" color
+
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Slava/vim-colors-tomorrow'
 Plugin 'sheerun/vim-wombat-scheme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'goatslacker/mango.vim'
+Plugin 'jelera/vim-hybrid'
 
-Plugin 'pangloss/vim-javascript'
+" Plugin 'pangloss/vim-javascript'
 " JSX Syntax highlighting
 Plugin 'mxw/vim-jsx'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'vim-scripts/JavaScript-Indent'
 
 Plugin 'Raimondi/delimitMate'
 "Plugin 'jiangmiao/auto-pairs'
@@ -63,6 +67,7 @@ Plugin 'tpope/vim-repeat'
 
 " color highlighting
 Plugin 'chrisbra/Colorizer'
+Plugin 'elzr/vim-json'
 
 " Meteor
 Plugin 'Slava/vim-spacebars'
@@ -77,13 +82,18 @@ Plugin 'cmather/vim-meteor-snippets'
 " js beautify
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
+
 map <c-f> :call JsBeautify()<cr>
 " or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsxBeautify()<cr>
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsxBeautify() <cr>
 " for html
 autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
 " for css or scss
 autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -147,9 +157,10 @@ set term=screen-256color
 
 set t_Co=256
 let g:tomorrow_termcolors=256
+let g:solarized_termcolors=256
 syntax enable
-set background=dark
-colorscheme tomorrow
+colorscheme wombat
+" set background=dark
 
 " show whitespace
 set list
@@ -291,10 +302,10 @@ set visualbell
 " Don't parse modelines (google 'vim modeline vulnerability').
 set nomodeline
 
-"Do not fold by default. But if, do it up to 3 levels.
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
+" javascript folding
+au FileType javascript call JavaScriptFold()
+" set foldmethod=manual
+" set foldnestmax=1
 
 " Enable mouse for scrolling and window resizing.
 set mouse=a
@@ -392,6 +403,9 @@ vmap <silent> <expr> p <sid>Repl()
 " Prevent common mistake of pressing q: instead :q
 map q: :q
 
+" open every file in split right
+set splitright
+
 " Make a simple 'search' text object.
 " http://vim.wikia.com/wiki/Copy_or_change_search_hit It allows for replacing
 " search matches with cs and then /././.
@@ -399,3 +413,10 @@ vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
     \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 
+
+" Send more characters to the terminal at once.
+" Makes things smoother, will probably be enabled by my terminal anyway.
+set ttyfast
+
+" Stops macros rendering every step.
+set lazyredraw

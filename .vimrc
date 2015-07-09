@@ -1,4 +1,3 @@
-set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -21,28 +20,39 @@ Plugin 'tpope/vim-sensible'
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 
+" colors
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'Slava/vim-colors-tomorrow'
 Plugin 'sheerun/vim-wombat-scheme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'goatslacker/mango.vim'
-Plugin 'jelera/vim-hybrid'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'jdkanani/vim-material-theme'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'adlawson/vim-sorcerer'
+Plugin 'jpo/vim-railscasts-theme'
+Plugin 'chriskempson/vim-tomorrow-theme'
+" Plugin 'morhetz/gruvbox'
+Plugin 'sk1418/last256'
 
-" Plugin 'pangloss/vim-javascript'
 " JSX Syntax highlighting
 Plugin 'mxw/vim-jsx'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'vim-scripts/JavaScript-Indent'
+" Plugin 'jelera/vim-javascript-syntax'
+" Plugin 'vim-scripts/JavaScript-Indent'
+Plugin 'pangloss/vim-javascript'
+Plugin 'lukaszb/vim-web-indent'
 
 Plugin 'Raimondi/delimitMate'
 "Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-commentary' " Comment things out
+" Plugin 'tpope/vim-commentary' " Comment things out
+Plugin 'tomtom/tcomment_vim' " Comment things out
 
 Plugin 'kien/ctrlp.vim' "fuzzy finder
 
 Plugin 'terryma/vim-expand-region'
 " Indentation Highlighting
 Plugin 'Yggdroot/indentLine'
+" Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -82,18 +92,12 @@ Plugin 'cmather/vim-meteor-snippets'
 " js beautify
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
+" Plugin 'millermedeiros/vim-esformatter'
 
-map <c-f> :call JsBeautify()<cr>
-" or
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsxBeautify() <cr>
-" for html
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-autocmd FileType javascript vnoremap <buffer>  <c-f> :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+" TODO: find better way
+autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -103,6 +107,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 " ultisnips end
 
+let g:js_indent_log = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -153,14 +158,21 @@ map <C-n> :NERDTreeToggle<CR>
 " tagbar
 nmap <C-t> :TagbarToggle<CR>
 
+" ctrl-p ignore
+set wildignore+=*/packages/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|packages)$'
+let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
+
 set term=screen-256color
 
-set t_Co=256
-let g:tomorrow_termcolors=256
-let g:solarized_termcolors=256
+" set t_Co=256
+" let g:tomorrow_termcolors=256
+" let g:solarized_termcolors=256
+" let g:hybrid_use_Xresources=1
+" let g:enable_bold_font = 1
+set background=dark
 syntax enable
-colorscheme wombat
-" set background=dark
+colorscheme hybrid_reverse
 
 " show whitespace
 set list
@@ -303,9 +315,9 @@ set visualbell
 set nomodeline
 
 " javascript folding
-au FileType javascript call JavaScriptFold()
+" au FileType javascript call JavaScriptFold()
 " set foldmethod=manual
-" set foldnestmax=1
+set foldnestmax=1
 
 " Enable mouse for scrolling and window resizing.
 set mouse=a
@@ -420,3 +432,5 @@ set ttyfast
 
 " Stops macros rendering every step.
 set lazyredraw
+
+

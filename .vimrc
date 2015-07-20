@@ -57,7 +57,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'marijnh/tern_for_vim'
 " Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-unimpaired'
+" TODO: häh
+" Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/MatchTagAlways'
@@ -446,10 +447,13 @@ set lazyredraw
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
+" remap vim annoyance
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
 
+set splitbelow
+set splitright
+
+map f {{)
+map l }}(

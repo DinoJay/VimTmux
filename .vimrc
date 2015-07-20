@@ -55,12 +55,14 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'Yggdroot/indentLine'
 " Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/MatchTagAlways'
 Plugin 'helino/vim-json'
-Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
 
 " stylesheet syntax highlighting
 Plugin 'groenewege/vim-less'
@@ -321,6 +323,7 @@ set nomodeline
 " au FileType javascript call JavaScriptFold()
 " set foldmethod=manual
 set foldnestmax=1
+set nofoldenable            " have folds open by default
 
 " Enable mouse for scrolling and window resizing.
 set mouse=a
@@ -442,4 +445,11 @@ set lazyredraw
 " screwing up folding when switching between windows.
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
 

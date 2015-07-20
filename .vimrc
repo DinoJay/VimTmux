@@ -32,6 +32,7 @@ Plugin 'kristijanhusak/vim-hybrid-material'
 Plugin 'adlawson/vim-sorcerer'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'NLKNguyen/papercolor-theme'
 " Plugin 'morhetz/gruvbox'
 Plugin 'sk1418/last256'
 
@@ -58,14 +59,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'majutsushi/tagbar'
 Plugin 'Valloric/MatchTagAlways'
+Plugin 'helino/vim-json'
+Plugin 'mhinz/vim-signify'
 
 " stylesheet syntax highlighting
 Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
+" Plugin 'digitaltoad/vim-jade'
 Plugin 'mustache/vim-mustache-handlebars'
 
 Plugin 'godlygeek/tabular'
 
+Plugin 'haya14busa/incsearch.vim'
 "Plugin 'plasticboy/vim-markdown'
 Plugin 'adimit/prolog.vim'
 Plugin 'EinfachToll/DidYouMean'
@@ -77,7 +81,6 @@ Plugin 'tpope/vim-repeat'
 
 " color highlighting
 Plugin 'chrisbra/Colorizer'
-Plugin 'elzr/vim-json'
 
 " Meteor
 Plugin 'Slava/vim-spacebars'
@@ -165,11 +168,11 @@ let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
 
 set term=screen-256color
 
-" set t_Co=256
+set t_Co=256
 " let g:tomorrow_termcolors=256
 " let g:solarized_termcolors=256
 " let g:hybrid_use_Xresources=1
-" let g:enable_bold_font = 1
+let g:enable_bold_font = 1
 set background=dark
 syntax enable
 colorscheme hybrid_reverse

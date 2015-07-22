@@ -80,7 +80,6 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'cmather/vim-meteor-snippets'
 
-" js beautify
 Plug 'maksimr/vim-jsbeautify'
 Plug 'einars/js-beautify'
 Plug 'junegunn/rainbow_parentheses.vim'

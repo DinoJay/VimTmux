@@ -20,3 +20,6 @@ let g:indentLine_char = '|'
 " set line length marker
 set colorcolumn=80
 
+" highlight crusor
+"highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline

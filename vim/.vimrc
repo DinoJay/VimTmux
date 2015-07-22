@@ -1,4 +1,3 @@
-source ~/dotfiles/vim/plugins.vim
-source ~/dotfiles/vim/style.vim
-source ~/dotfiles/vim/options.vim
-source ~/dotfiles/vim/mappings.vim
+for f in split(glob('~/.dotfiles/vim/*.vim'), '\n')
+    exe 'source' f
+endfor

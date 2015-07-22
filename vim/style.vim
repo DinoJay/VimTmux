@@ -8,7 +8,7 @@ set t_Co=256
 set background=dark
 syntax enable
 colorscheme hybrid_reverse
-let g:seoul256_background = 233
+" let g:seoul256_background = 233
 
 " show whitespace
 set list

@@ -1,9 +1,8 @@
 
 " javascript folding
-" au FileType javascript call JavaScriptFold()
 " set foldmethod=manual
-set foldnestmax=1
-set nofoldenable            " have folds open by default
+" set foldnestmax=1
+" set nofoldenable            " have folds open by default
 
 " line numbers
 set number
@@ -66,3 +65,6 @@ set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
+
+" TODO: watch for file changes of .vimrc
+" autocmd BufWritePost ~/.vimrc source %

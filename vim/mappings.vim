@@ -248,4 +248,4 @@ set splitbelow
 set splitright
 
 map f {{)
-map l }}(
+map ö }}(

@@ -10,16 +10,16 @@ Plug 'Lokaltog/vim-distinguished'
 Plug 'Slava/vim-colors-tomorrow'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'altercation/vim-colors-solarized'
-Plug 'goatslacker/mango.vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'jdkanani/vim-material-theme'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'adlawson/vim-sorcerer'
 Plug 'jpo/vim-railscasts-theme'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'sk1418/last256'
 Plug 'junegunn/seoul256.vim'
+
+" Plug 'junegunn/vim-pseudocl'
+" Plug 'junegunn/vim-oblique'
 
 " JSX Syntax highlighting
 Plug 'mxw/vim-jsx'
@@ -65,6 +65,7 @@ Plug 'gorkunov/smartpairs.vim'
 Plug 'tpope/vim-surround'
 " repeat for plugins
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-obsession'
 
 " color highlighting
 Plug 'chrisbra/Colorizer'
@@ -82,5 +83,8 @@ Plug 'cmather/vim-meteor-snippets'
 " js beautify
 Plug 'maksimr/vim-jsbeautify'
 Plug 'einars/js-beautify'
+Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'adlawson/vim-sorcerer'
 " Plug 'millermedeiros/vim-esformatter'
+
 call plug#end()

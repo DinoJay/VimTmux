@@ -1,105 +1,3 @@
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-
-
-" a universal set of defaults that (hopefully) everyone can agree on.
-Plugin 'tpope/vim-sensible'
-"Plugin 'sheerun/vimrc'
-Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
-
-" colors
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'Slava/vim-colors-tomorrow'
-Plugin 'sheerun/vim-wombat-scheme'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'goatslacker/mango.vim'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'jdkanani/vim-material-theme'
-Plugin 'kristijanhusak/vim-hybrid-material'
-Plugin 'adlawson/vim-sorcerer'
-Plugin 'jpo/vim-railscasts-theme'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'NLKNguyen/papercolor-theme'
-" Plugin 'morhetz/gruvbox'
-Plugin 'sk1418/last256'
-
-" JSX Syntax highlighting
-Plugin 'mxw/vim-jsx'
-" Plugin 'jelera/vim-javascript-syntax'
-" Plugin 'vim-scripts/JavaScript-Indent'
-Plugin 'pangloss/vim-javascript'
-Plugin 'lukaszb/vim-web-indent'
-
-Plugin 'Raimondi/delimitMate'
-"Plugin 'jiangmiao/auto-pairs'
-" Plugin 'tpope/vim-commentary' " Comment things out
-Plugin 'tomtom/tcomment_vim' " Comment things out
-
-Plugin 'kien/ctrlp.vim' "fuzzy finder
-
-Plugin 'terryma/vim-expand-region'
-" Indentation Highlighting
-Plugin 'Yggdroot/indentLine'
-" Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'marijnh/tern_for_vim'
-" Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-vinegar'
-" TODO: häh
-" Plugin 'tpope/vim-unimpaired'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/MatchTagAlways'
-Plugin 'helino/vim-json'
-Plugin 'airblade/vim-gitgutter'
-
-" stylesheet syntax highlighting
-Plugin 'groenewege/vim-less'
-" Plugin 'digitaltoad/vim-jade'
-Plugin 'mustache/vim-mustache-handlebars'
-
-Plugin 'godlygeek/tabular'
-
-Plugin 'haya14busa/incsearch.vim'
-"Plugin 'plasticboy/vim-markdown'
-Plugin 'adimit/prolog.vim'
-Plugin 'EinfachToll/DidYouMean'
-" smart pairs, easily select closures of brackets
-Plugin 'gorkunov/smartpairs.vim'
-Plugin 'tpope/vim-surround'
-" repeat for plugins
-Plugin 'tpope/vim-repeat'
-
-" color highlighting
-Plugin 'chrisbra/Colorizer'
-
-" Meteor
-Plugin 'Slava/vim-spacebars'
-
-" ultisnips start, not working yet
-Plugin 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-Plugin 'cmather/vim-meteor-snippets'
-
-" js beautify
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
-" Plugin 'millermedeiros/vim-esformatter'
-
 " TODO: find better way
 autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsxBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
@@ -114,25 +12,6 @@ let g:UltiSnipsEditSplit="vertical"
 " ultisnips end
 
 let g:js_indent_log = 1
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-filetype on
-" These are the tweaks I apply to YCM's config, you don't need them but
-" they might help. YCM gives you popups and splits by default that
-" some people might not like, so these should tidy it up a bit for you.
 
 " Autocomplete
 let g:ycm_add_preview_to_completeopt=0
@@ -168,30 +47,6 @@ nmap <C-t> :TagbarToggle<CR>
 set wildignore+=*/packages/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|packages)$'
 let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
-
-set term=screen-256color
-
-set t_Co=256
-" let g:tomorrow_termcolors=256
-" let g:solarized_termcolors=256
-" let g:hybrid_use_Xresources=1
-let g:enable_bold_font = 1
-set background=dark
-syntax enable
-colorscheme hybrid_reverse
-
-" show whitespace
-set list
-
-" indent lines setup
-let g:indentLine_color_dark = 1
-let g:indentLine_color_term = 239
-let g:indentLine_char = '|'
-
-" line numbers
-set number
-"set relativenumber
-:set numberwidth=2
 
 " insert new line without entering insert mode
 nmap <S-Enter> O<Esc>j
@@ -282,18 +137,6 @@ endfor
   "call system("mkdir -p " . expand(s:dir) . "/{backup,undo}")
 "end
 
-" Keep 8 lines above or below the cursor when scrolling.
-set scrolloff=8
-
-" Keep 15 columns next to the cursor when scrolling horizontally.
-set sidescroll=1
-set sidescrolloff=15
-
-" Set minimum window size to 79x5.
-set winwidth=79
-set winheight=5
-set winminheight=5
-
 " If opening buffer, search first in opened windows.
 set switchbuf=usetab
 
@@ -313,57 +156,6 @@ nmap k gk
 " For autocompletion, complete as much as you can.
 set wildmode=longest,full
 
-" Disable any annoying beeps on errors.
-set noerrorbells
-set visualbell
-
-" Don't parse modelines (google 'vim modeline vulnerability').
-set nomodeline
-
-" javascript folding
-" au FileType javascript call JavaScriptFold()
-" set foldmethod=manual
-set foldnestmax=1
-set nofoldenable            " have folds open by default
-
-" Enable mouse for scrolling and window resizing.
-set mouse=a
-
-" Disable swap to prevent annoying messages.
-set noswapfile
-
-" Save up to 100 marks, enable capital marks. TODO: understand
-set viminfo='100,f1
-
-
-" show all search hits
-set hlsearch
-
-" Ignore case when searching.
-set ignorecase
-
-" Don't ignore case when search has capital letter (although also don't ignore case by default).
-set smartcase
-
-" Show mode in statusbar, not separately.
-set noshowmode
-
-" and removes them when switch to insert mode
-:set hlsearch
-autocmd InsertEnter * :let @/=""
-autocmd InsertLeave * :let @/=""
-
-" set line length marker
-set colorcolumn=80
-
-" Use dash as word separator. TODO: understand
-set iskeyword+=-
-
-" Disable output, vcs, archive, rails, temp and backup files.
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-set wildignore+=*.swp,*~,._*
 
 " Auto center on matched string.
 noremap n nzz

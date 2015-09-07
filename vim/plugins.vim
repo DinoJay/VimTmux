@@ -17,6 +17,10 @@ Plug 'jpo/vim-railscasts-theme'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/seoul256.vim'
+Plug 'chriskempson/base16-vim'
+
+" markdown
+Plug 'shime/vim-livedown', {'for': 'markdown'}
 
 " Plug 'junegunn/vim-pseudocl'
 " Plug 'junegunn/vim-oblique'
@@ -84,6 +88,9 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'einars/js-beautify'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'adlawson/vim-sorcerer'
+
+Plug 'edkolev/tmuxline.vim'
+Plug 'ryanoasis/vim-devicons'
 " Plug 'millermedeiros/vim-esformatter'
 
 call plug#end()

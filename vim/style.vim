@@ -7,8 +7,16 @@ set t_Co=256
 " let g:enable_bold_font = 1
 set background=dark
 syntax enable
-colorscheme hybrid_reverse
-" let g:seoul256_background = 233
+" let base16colorspace=256
+colorscheme base16-default
+
+let base16colorspace="256"
+set t_Co=256
+set background=dark
+colorscheme base16-eighties
+
+
+let g:tmuxline_theme = 'airline_visual'
 
 " show whitespace
 set list

@@ -21,6 +21,9 @@ set winwidth=79
 set winheight=5
 set winminheight=5
 
+set relativenumber
+set number
+
 " show all search hits
 set hlsearch
 
@@ -181,3 +184,5 @@ set clipboard=unnamedplus
 
 let g:js_indent_log = 1
 
+" spell check
+autocmd BufRead,BufNewFile *.md setlocal spell

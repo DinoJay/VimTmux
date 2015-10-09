@@ -1,8 +1,13 @@
 
-" javascript folding
-" set foldmethod=manual
-" set foldnestmax=1
+" " javascript folding
+" set foldmethod=syntax
 " set nofoldenable            " have folds open by default
+
+set foldmethod=syntax
+" set foldlevelstart=1
+set foldnestmax=1
+
+let javaScript_fold=1         " JavaScript
 
 " line numbers
 set number
@@ -186,3 +191,14 @@ let g:js_indent_log = 1
 
 " spell check
 autocmd BufRead,BufNewFile *.md setlocal spell
+
+" conceal
+" let g:javascript_conceal_function   = "ƒ"
+" let g:javascript_conceal_null       = "ø"
+" let g:javascript_conceal_this       = "@"
+" let g:javascript_conceal_return     = "⇚"
+" let g:javascript_conceal_undefined  = "¿"
+" let g:javascript_conceal_NaN        = "ℕ"
+" let g:javascript_conceal_prototype  = "¶"
+" let g:javascript_conceal_static     = "•"
+" let g:javascript_conceal_super      = "Ω"

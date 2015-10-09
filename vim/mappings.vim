@@ -82,3 +82,20 @@ set splitright
 
 map f {{)
 map ö }}(
+
+
+" TODO: find better way
+autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsxBeautify()<cr>
+autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
+autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
+
+" Syntastic Errors
+map <silent> <Leader>e :Errors<CR>
+
+" easy align
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+

@@ -10,3 +10,5 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# start fish automatically
+# test $TERM != "screen"; and exec tmux -2

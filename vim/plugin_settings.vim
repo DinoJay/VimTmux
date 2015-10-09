@@ -45,9 +45,3 @@ let g:mta_filetypes = {
     \ 'javascript' : 1,
 \}
 
-
-" TODO: find better way
-autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsxBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
-

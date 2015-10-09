@@ -21,10 +21,13 @@ Plug 'chriskempson/base16-vim'
 
 " markdown
 Plug 'shime/vim-livedown', {'for': 'markdown'}
-
+Plug 'dag/vim2hs', {'for': 'haskell'}
 " Plug 'junegunn/vim-pseudocl'
 " Plug 'junegunn/vim-oblique'
 
+Plug 'junegunn/vim-easy-align'
+" change order of arguments
+Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
 Plug 'mxw/vim-jsx'
 " Plug 'jelera/vim-javascript-syntax'
@@ -32,9 +35,12 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'lukaszb/vim-web-indent'
 
+" json syntax
+Plug 'helino/vim-json'
+
+" Automatically match pairs intelligently.
 Plug 'Raimondi/delimitMate'
 "Plug 'jiangmiao/auto-pairs'
-" Plug 'tpope/vim-commentary' " Comment things out
 Plug 'tomtom/tcomment_vim' " Comment things out
 
 Plug 'kien/ctrlp.vim' "fuzzy finder
@@ -45,12 +51,11 @@ Plug 'Yggdroot/indentLine'
 " Plug 'nathanaelkane/vim-indent-guides'
 Plug 'marijnh/tern_for_vim'
 " Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 " Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'
-Plug 'helino/vim-json'
 Plug 'airblade/vim-gitgutter'
 
 " stylesheet syntax highlighting

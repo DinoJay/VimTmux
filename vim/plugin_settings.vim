@@ -45,3 +45,5 @@ let g:mta_filetypes = {
     \ 'javascript' : 1,
 \}
 
+" diminactive
+" let g:diminactive_use_syntax = 1

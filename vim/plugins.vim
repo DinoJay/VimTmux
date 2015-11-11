@@ -18,7 +18,13 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/seoul256.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'sjl/badwolf/'
 
+Plug 'blueyed/vim-diminactive'
+
+" TODO: not working
+" Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 " markdown
 Plug 'shime/vim-livedown', {'for': 'markdown'}
 Plug 'dag/vim2hs', {'for': 'haskell'}
@@ -35,15 +41,20 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'lukaszb/vim-web-indent'
 
-" json syntax
-Plug 'helino/vim-json'
+" Plug 'flowtype/vim-flow'
 
+" json syntax
+" Plug 'helino/vim-json'
+Plug 'elzr/vim-json'
 " Automatically match pairs intelligently.
 Plug 'Raimondi/delimitMate'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim' " Comment things out
 
-Plug 'kien/ctrlp.vim' "fuzzy finder
+"fuzzy finder
+Plug 'kien/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'terryma/vim-expand-region'
 " Indentation Highlighting
@@ -52,7 +63,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'marijnh/tern_for_vim'
 " Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
-" Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'
@@ -62,6 +73,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'groenewege/vim-less'
 " Plug 'digitaltoad/vim-jade'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/html5-syntax.vim'
+Plug 'othree/html5.vim'
 
 Plug 'godlygeek/tabular'
 

@@ -89,6 +89,9 @@ autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsx
 autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
 
+autocmd BufNewFile,BufRead *.less set filetype=less
+autocmd FileType less set omnifunc=csscomplete#CompleteCSS
+
 " Syntastic Errors
 map <silent> <Leader>e :Errors<CR>
 
@@ -99,3 +102,21 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+" python json formatting
+" map <silent> <Leader>j !python -m json.tool<CR>
+map <Leader>j %!python -m json.tool<CR>
+
+" for vim unimpaired
+" nmap < [
+" nmap > ]
+" omap < [
+" omap > ]
+" xmap < [
+" xmap > ]

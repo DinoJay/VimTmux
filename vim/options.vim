@@ -4,8 +4,9 @@
 " set nofoldenable            " have folds open by default
 
 set foldmethod=syntax
+
 " set foldlevelstart=1
-set foldnestmax=1
+set foldnestmax=2
 
 let javaScript_fold=1         " JavaScript
 
@@ -29,9 +30,9 @@ set winminheight=5
 set relativenumber
 set number
 
-" show all search hits
-set hlsearch
 
+set hlsearch " show all search hits
+set incsearch           " search as characters are entered
 " Ignore case when searching.
 set ignorecase
 
@@ -42,7 +43,6 @@ set smartcase
 set noshowmode
 
 " and removes them when switch to insert mode
-:set hlsearch
 autocmd InsertEnter * :let @/=""
 autocmd InsertLeave * :let @/=""
 
@@ -192,13 +192,25 @@ let g:js_indent_log = 1
 " spell check
 autocmd BufRead,BufNewFile *.md setlocal spell
 
-" conceal
-" let g:javascript_conceal_function   = "ƒ"
-" let g:javascript_conceal_null       = "ø"
-" let g:javascript_conceal_this       = "@"
-" let g:javascript_conceal_return     = "⇚"
-" let g:javascript_conceal_undefined  = "¿"
-" let g:javascript_conceal_NaN        = "ℕ"
-" let g:javascript_conceal_prototype  = "¶"
-" let g:javascript_conceal_static     = "•"
-" let g:javascript_conceal_super      = "Ω"
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
+" set viewoptions-=options
+" augroup vimrc
+"     autocmd BufWritePost *
+"     \   if expand('%') != '' && &buftype !~ 'nofile'
+"     \|      mkview
+"     \|  endif
+"     autocmd BufRead *
+"     \   if expand('%') != '' && &buftype !~ 'nofile'
+"     \|      silent loadview
+"     \|  endif
+" augroup END
+"
+autocmd BufWinLeave *.* mkview!
+autocmd BufWinEnter *.* silent loadview

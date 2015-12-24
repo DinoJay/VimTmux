@@ -3,7 +3,11 @@
 # Base16 Shell
 eval sh $HOME/.config/base16-shell/base16-default.dark.sh
 
-alias tmux="tmux -2"
+set -gx TERM screen-256color;
+
+# alias tmux="tmux"
+alias vim='nvim'
+alias nv='nvim'
 
 # some more ls aliases
 alias ll='ls -alF'

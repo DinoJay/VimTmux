@@ -80,8 +80,24 @@ nnoremap K <nop>
 set splitbelow
 set splitright
 
-map f {{)
-map ö }}(
+" map! ü <C-]>
+map! ö [
+map! ä ]
+map! Ö {
+map! Ä }
+map! ß /
+
+map ö [
+map ä ]
+map Ö {
+map Ä }
+map ß /
+
+cnoremap ö [
+cnoremap ä ]
+cnoremap Ö {
+cnoremap Ä }
+cnoremap ß /
 
 
 " TODO: find better way

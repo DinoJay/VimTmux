@@ -1,19 +1,14 @@
-
-" " javascript folding
-" set foldmethod=syntax
-" set nofoldenable            " have folds open by default
-
 set foldmethod=syntax
 
-" set foldlevelstart=1
+set foldlevelstart=1
 set foldnestmax=2
 
-let javaScript_fold=1         " JavaScript
+let javaScript_fold=1
 
 " line numbers
 set number
 "set relativenumber
-:set numberwidth=2
+set numberwidth=2
 
 " Keep 8 lines above or below the cursor when scrolling.
 set scrolloff=8

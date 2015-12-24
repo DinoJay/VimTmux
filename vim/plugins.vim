@@ -19,6 +19,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/seoul256.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'sjl/badwolf/'
+Plug 'adlawson/vim-sorcerer'
 
 Plug 'blueyed/vim-diminactive'
 
@@ -36,6 +37,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
 Plug 'mxw/vim-jsx'
+" Plug 'othree/yajs.vim'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'vim-scripts/JavaScript-Indent'
 Plug 'pangloss/vim-javascript'
@@ -52,19 +54,21 @@ Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim' " Comment things out
 
 "fuzzy finder
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'terryma/vim-expand-region'
 " Indentation Highlighting
 Plug 'Yggdroot/indentLine'
-" Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'marijnh/tern_for_vim'
 " Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/syntastic'
+" Plug 'benekastah/neomake'
+
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'
 Plug 'airblade/vim-gitgutter'
@@ -72,7 +76,7 @@ Plug 'airblade/vim-gitgutter'
 " stylesheet syntax highlighting
 Plug 'groenewege/vim-less'
 " Plug 'digitaltoad/vim-jade'
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5-syntax.vim'
 Plug 'othree/html5.vim'
 
@@ -93,22 +97,25 @@ Plug 'tpope/vim-obsession'
 Plug 'chrisbra/Colorizer'
 
 " Meteor
-Plug 'Slava/vim-spacebars'
+" Plug 'Slava/vim-spacebars'
 
 " ultisnips start, not working yet
 Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-Plug 'cmather/vim-meteor-snippets'
+" Plug 'cmather/vim-meteor-snippets'
 
 Plug 'maksimr/vim-jsbeautify'
 Plug 'einars/js-beautify'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'adlawson/vim-sorcerer'
 
 Plug 'edkolev/tmuxline.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
 Plug 'ryanoasis/vim-devicons'
+
 " Plug 'millermedeiros/vim-esformatter'
 
 call plug#end()

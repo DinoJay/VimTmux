@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 "Plug 'sheerun/vimrc'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 Plug 'Valloric/YouCompleteMe'
 
 " colors
@@ -36,12 +38,15 @@ Plug 'junegunn/vim-easy-align'
 " change order of arguments
 Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 " Plug 'othree/yajs.vim'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'vim-scripts/JavaScript-Indent'
 Plug 'pangloss/vim-javascript'
-Plug 'lukaszb/vim-web-indent'
+" Plug 'lukaszb/vim-web-indent'
+
+Plug 'mbbill/undotree'
+Plug 'vim-scripts/restore_view.vim'
 
 " Plug 'flowtype/vim-flow'
 

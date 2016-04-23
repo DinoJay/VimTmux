@@ -1,9 +1,10 @@
-set foldmethod=syntax
+set foldmethod=manual
 
 set foldlevelstart=1
 set foldnestmax=2
+set foldclose=all
 
-let javaScript_fold=1
+let javaScript_fold=0
 
 " line numbers
 set number
@@ -160,7 +161,6 @@ set ttyfast
 " Stops macros rendering every step.
 set lazyredraw
 
-" TODO: disable caps lock
 " Execute 'lnoremap x X' and 'lnoremap X x' for each letter a-z.
 for c in range(char2nr('A'), char2nr('Z'))
   execute 'lnoremap ' . nr2char(c+32) . ' ' . nr2char(c)
@@ -206,6 +206,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 "     \|      silent loadview
 "     \|  endif
 " augroup END
-"
-autocmd BufWinLeave *.* mkview!
-autocmd BufWinEnter *.* silent loadview
+
+" autocmd BufWinLeave *.* mkview!
+" autocmd BufWinEnter *.* silent loadview
+set viewoptions=cursor,folds,slash,unix

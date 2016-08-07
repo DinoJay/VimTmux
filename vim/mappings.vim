@@ -81,21 +81,28 @@ set splitbelow
 set splitright
 
 " map! ü <C-]>
-map! ö [
-map! ä ]
-map! Ö {
-map! Ä }
-map! ß /
+" map! ö [
+" map! ä ]
+" map! Ö {
+" map! Ä }
+" map! ß /
+
+nnoremap j gj
+nnoremap k gk
 
 " cnoremap ö [
 " cnoremap ä ]
-" cnoremap Ö {
-" cnoremap Ä }
-" cnoremap ß /
+" TODO: vertical movement
+nnoremap ö {
+nnoremap ä }
+nnoremap ß /
+vnoremap ö {
+vnoremap ä }
+vnoremap ß /
 
 
 " TODO: find better way
-autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call RangeJsBeautify()<cr>
+autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call JsBeautify()<cr>
 autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
 autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
 

@@ -40,13 +40,19 @@ Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
 " Plug 'mxw/vim-jsx'
 " Plug 'othree/yajs.vim'
-" Plug 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 " Plug 'vim-scripts/JavaScript-Indent'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
+" Plug 'bigfish/vim-js-context-coloring'
+Plug 'jason0x43/vim-js-indent'
 " Plug 'lukaszb/vim-web-indent'
 
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/restore_view.vim'
+Plug 'accelerated-smooth-scroll'
+
+Plug 'rbong/vim-vertical'
+Plug 'joeytwiddle/sexy_scroller.vim'
 
 " Plug 'flowtype/vim-flow'
 

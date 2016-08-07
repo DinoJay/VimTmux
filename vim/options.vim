@@ -17,6 +17,7 @@ set scrolloff=8
 " Keep 15 columns next to the cursor when scrolling horizontally.
 set sidescroll=1
 set sidescrolloff=15
+let g:SexyScroller_CursorTime=200
 
 " Set minimum window size to 79x5.
 set winwidth=79

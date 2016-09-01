@@ -24,10 +24,36 @@ set completeopt-=preview
 set wildmode=longest,full
 
 " syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_check_on_open=1
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_error_symbol = "✗"
+" Syntastic Errors
+map <silent> <Leader>e :Errors<CR>
+map <silent> <leader>ln :lnext<CR>
+map <silent> <leader>lp :lprev<CR>
 
+" neomake
+let g:neomake_list_height = 2
+let g:neomake_open_list = 2
+let g:neomake_verbose = 3
+let g:neomake_javascript_eslint_exe = 'eslint_d'
+let g:neomake_javascript_enabled_makers = ['eslint']
+autocmd! BufWritePost *.js silent! Neomake
+
+" fast fold
+let g:js_fold = 1
+
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" neomake
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" nmap <Leader><Space>o :lopen<CR>      " open location window
+" nmap <Leader><Space>c :lclose<CR>     " close location window
+" nmap <Leader><Space>, :ll<CR>         " go to current error/warning
+" nmap <Leader><Space>n :lnext<CR>      " next error/warning
+" nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -44,6 +70,7 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'javascript' : 1,
 \}
+
 
 " diminactive
 " let g:diminactive_use_syntax = 1

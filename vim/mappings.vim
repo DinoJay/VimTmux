@@ -109,8 +109,6 @@ autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautif
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd FileType less set omnifunc=csscomplete#CompleteCSS
 
-" Syntastic Errors
-map <silent> <Leader>e :Errors<CR>
 
 " easy align
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
@@ -137,3 +135,14 @@ map <Leader>j %!python -m json.tool<CR>
 " omap > ]
 " xmap < [
 " xmap > ]
+
+" If the current buffer has never been saved, it will have no name,
+" call the file browser to save it, otherwise just save it.
+command -nargs=0 -bar Update if &modified
+                           \|    if empty(bufname('%'))
+                           \|        browse confirm write
+                           \|    else
+                           \|        confirm write
+                           \|    endif
+                           \|endif
+nnoremap <silent> <C-S> :<C-u>Update<CR>

@@ -136,6 +136,9 @@ map <Leader>j %!python -m json.tool<CR>
 " xmap < [
 " xmap > ]
 
+nnoremap <Leader>m :lnext<CR>
+nnoremap <Leader>n :lprevious<CR>
+
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command -nargs=0 -bar Update if &modified

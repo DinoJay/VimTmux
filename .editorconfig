@@ -4,6 +4,7 @@ root = true
 
 [**.js]
 indent_style = space
+max_char = 78
 indent_size = 2
 
 [**.json]
@@ -21,6 +22,6 @@ indent_size = 4
 
 [**.html]
 indent_style = space
-indent_size = 2
+indent_size = 4
 max_char = 78
 brace_style = expand

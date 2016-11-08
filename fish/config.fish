@@ -16,3 +16,5 @@ alias l='ls -CF'
 
 # start fish automatically
 # test $TERM != "screen"; and exec tmux -2
+
+alias tmux='env TERM=xterm-256color tmux'

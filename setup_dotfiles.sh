@@ -1,6 +1,6 @@
 # setup dotfiles TODO: some clean up
 command_exists () {
-    type "$1" &> /dev/null ;
+  type "$1" &> /dev/null ;
 }
 
 if [ -L "~/.vimrc" ]; then
@@ -60,3 +60,4 @@ if ! command_exists node ; then
   sudo apt-get install -y nodejs
 fi
 
+sudo npm i eslint_d --global

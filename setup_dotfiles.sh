@@ -1,7 +1,62 @@
-# setup dotfiles
-ln -T ~/.dotfiles/vim/.vimrc ~/.vimrc
-ln -T ~/.dotfiles/vim/.vimrc ~/.config/nvim/init.vim
-ln -T ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
-ln -T ~/.dotfiles/fish/config.fish ~/.config/fish/config.fish
-ln -T ~/.dotfiles/eslint/.eslintrc ~/.eslintrc
-ln -T ~/.dotfiles/vim/.editorconfig  ~/.editorconfig
+# setup dotfiles TODO: some clean up
+command_exists () {
+    type "$1" &> /dev/null ;
+}
+
+if [ -L "~/.vimrc" ]; then
+  ln -T ~/.dotfiles/vim/.vimrc ~/.vimrc
+fi
+
+if [ -L "~/.config/nvim/init.vim" ]; then
+  ln -T ~/.dotfiles/vim/.vimrc ~/.config/nvim/init.vim
+else
+  echo "nvim conf" already exists
+fi
+
+if [ -L "~/.tmux.conf" ]; then
+  ln -T ~/.dotfiles/tmux/.tmux.conf ~/.tmux.conf
+else
+  echo "tmux conf" already exists
+fi
+
+
+if [ -L "~/.bashrc" ]; then
+  ln -T ~/.dotfiles/bash/.bashrc ~/.bashrc
+else
+  echo "bash conf" already exists
+fi
+
+if [ -L "~/.editorconfig" ]; then
+  ln -T ~/.dotfiles/vim/.editorconfig  ~/.editorconfig
+else
+  echo "editorconfig" already exists
+fi
+
+if [ ! -d ~/.fonts/ ]; then
+  mkdir ~/.fonts
+else
+  echo "fonts" already exists
+fi
+
+if [ -d ./fonts/Sauce\ Code\ Pro\ Nerd\ Font\ Complete.ttf ]; then
+  sudo cp ./fonts/Sauce\ Code\ Pro\ Nerd\ Font\ Complete.ttf ~/.fonts
+  fc-cache -vf ~/.fonts/
+else
+  echo "./fonts/Sauce\ Code\ Pro\ Nerd\ Font\ Complete.ttf" does not exist
+fi
+
+# python neovim client
+
+if ! command_exists ag ; then
+  # required for ctrl-p
+  sudo apt install silversearcher-ag
+fi
+
+# pip install neovim
+
+# and for node
+if ! command_exists node ; then
+  curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+  sudo apt-get install -y nodejs
+fi
+

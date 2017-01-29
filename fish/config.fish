@@ -1,9 +1,11 @@
 # git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
 # Base16 Shell
-eval sh $HOME/.config/base16-shell/base16-default.dark.sh
+# eval sh $HOME/.config/base16-shell/base16-default.dark.sh
 
 set -gx TERM screen-256color;
+
+# set PATH $PWD/node_modules/.bin $PATH
 
 # alias tmux="tmux"
 alias vim='nvim'
@@ -18,3 +20,5 @@ alias l='ls -CF'
 # test $TERM != "screen"; and exec tmux -2
 
 alias tmux='env TERM=xterm-256color tmux'
+
+

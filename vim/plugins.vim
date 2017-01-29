@@ -91,13 +91,14 @@ Plug 'benekastah/neomake'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'
 Plug 'airblade/vim-gitgutter'
+Plug 'haya14busa/vim-asterisk'
 
 " stylesheet syntax highlighting
-Plug 'groenewege/vim-less'
+" Plug 'groenewege/vim-less'
 " Plug 'digitaltoad/vim-jade'
 " Plug 'mustache/vim-mustache-handlebars'
-Plug 'othree/html5-syntax.vim'
-Plug 'othree/html5.vim'
+" Plug 'othree/html5-syntax.vim'
+" Plug 'othree/html5.vim'
 " Plug 'neovim/node-host', { 'do': 'npm install' }
 " Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 
@@ -105,7 +106,6 @@ Plug 'godlygeek/tabular'
 
 Plug 'haya14busa/incsearch.vim'
 "Plug 'plasticboy/vim-markdown'
-Plug 'adimit/prolog.vim'
 Plug 'EinfachToll/DidYouMean'
 " smart pairs, easily select closures of brackets
 Plug 'gorkunov/smartpairs.vim'
@@ -129,7 +129,11 @@ Plug 'honza/vim-snippets'
 
 " Plug 'maksimr/vim-jsbeautify'
 Plug 'ruanyl/vim-fixmyjs'
-" Plug 'Chiel92/vim-autoformat'
+" Plug 'benjie/neomake-local-eslint.vim'
+"
+" Plug 'jaawerth/nrun.vim'
+Plug 'benjie/neomake-local-eslint.vim'
+Plug 'Chiel92/vim-autoformat'
 " Plug 'einars/js-beautify'
 Plug 'junegunn/rainbow_parentheses.vim'
 

@@ -38,12 +38,67 @@ map <silent> <leader>lp :lprev<CR>
 let g:neomake_list_height = 2
 let g:neomake_open_list = 2
 let g:neomake_verbose = 3
-let g:neomake_javascript_eslint_exe = 'eslint_d'
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_jsx_eslint_exe = 'eslint_d'
-autocmd! BufWritePost *.js silent! Neomake
-autocmd! BufWritePost *.jsx silent! Neomake
+
+" you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" " let g:neomake_jsx_enabled_makers = ['eslint']
+"
+" function! NeomakeESlintChecker()
+"   let l:npm_bin = ''
+"   let l:eslint = 'eslint'
+"
+"   if executable('npm')
+"     let l:npm_bin = split(system('npm bin'), '\n')[0]
+"   endif
+"
+"   if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+"     let l:eslint = l:npm_bin . '/eslint'
+"   endif
+"
+"   let b:neomake_javascript_eslint_exe = l:eslint
+" endfunction
+" autocmd FileType javascript :call NeomakeESlintChecker()
+"
+" autocmd! BufWritePost,BufReadPost * Neomake
+
+" when switching/opening a JS buffer, set neomake's eslint path, and enable it as a maker
+"
+" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+" au BufEnter *.jsx let b:neomake_jsx_eslint_exe = nrun#Which('eslint')
+" let g:neomake_javascript_eslint_exe = 'eslint_d'
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_jsx_enabled_makers = ['eslint']
+" let g:neomake_jsx_eslint_exe = 'eslint_d'
+
+" function! NeomakeESlintChecker()
+"   let l:npm_bin = ''
+"   let l:eslint = 'eslint'
+"
+"   if executable('npm-which')
+"     let l:eslint = split(system('npm-which eslint'))[0]
+"     return 0
+"   endif
+"
+"   if executable('npm')
+"     let l:npm_bin = split(system('npm bin'), '\n')[0]
+"   endif
+"
+"   if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+"     let l:eslint = l:npm_bin . '/eslint'
+"   endif
+"
+"   let b:neomake_javascript_eslint_exe = l:eslint
+" endfunction
+"
+" autocmd FileType javascript :call NeomakeESlintChecker()
+"
+autocmd! BufWritePost,BufReadPost * Neomake
+
+" autocmd! BufWritePost *.js silent! Neomake
+" autocmd! BufWritePost *.jsx silent! Neomake
+
+" autocmd! FileType javascript,BufWinEnter,BufWritePost * Neomake
+
 
 " fast fold
 let g:js_fold = 1
@@ -56,12 +111,20 @@ endif
 " let g:deoplete#disable_auto_complete = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 let g:SuperTabDefaultCompletionType = '<c-n>'
-
+" omnifuncs
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
 " neomake
 " let g:neomake_javascript_enabled_makers = ['eslint']
 " nmap <Leader><Space>o :lopen<CR>      " open location window
@@ -87,7 +150,7 @@ let g:mta_filetypes = {
       \}
 
 
-" diminactive
+"
 " let g:diminactive_use_syntax = 1
 let g:haskell_conceal=0
 
@@ -117,26 +180,64 @@ map g# <Plug>(incsearch-nohl-g#)
 " let g:fixmyjs_use_local = 1
 " let g:fixmyjs_executable = 'path/to/eslint'
 " let g:fixmyjs_engine = 'eslint'
-" TODO: nasty hack
-let g:fixmyjs_executable = '~/dev/home_page/node_modules/eslint/bin/eslint.js'
-" let g:fixmyjs_executable = '~/node_modules/eslint/bin/eslint.js'
 
-" au BufWrite * :Autoformat
-au BufWritePre *.js :Fixmyjs
-au BufWritePre *.jsx :Fixmyjs
-
-" au BufWrite * :call JsBeautify()
-" autocmd TextChanged <buffer> call JsBeautify()
+let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout"'
+let g:formatters_javascript = ['eslint']
+let g:autoformat_verbosemode=1
+" au BufWritePre *.js :Fixmyjs
+" au BufWritePre *.jsx :Fixmyjs
+au BufWrite * :Autoformat
 "
-function! Lint()
-  if &filetype =~ 'javascript'
-    Neomake eslint --fix
-  else
-    Neomake
-  end
+
+let g:neomake_error_sign = {
+            \ 'text': '✗',
+            \ 'texthl': 'ErrorMsg',
+            \ }
+hi MyWarningMsg ctermbg=3 ctermfg=0
+let g:neomake_warning_sign = {
+            \ 'text': '>>',
+            \ 'texthl': 'MyWarningMsg',
+            \ }
+
+" function! Lint()
+"   if &filetype =~ 'javascript'
+"     Neomake eslint --fix
+"   else
+"     Neomake
+"   end
+" endfunction
+"
+" augroup lint_events
+"   autocmd!
+"   autocmd BufWritePost * call Lint()
+" augroup end
+
+" you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
+let g:neomake_javascript_enabled_makers = ['eslint_d']
+"  let g:neomake_javascript_eslint_exe =
+" when switching/opening a JS buffer, set neomake's eslint path, and enable it as a maker
+" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
+"
+function! GotoJump()
+  jumps
+  let j = input("Please select your jump: ")
+  if j != ''
+    let pattern = '\v\c^\+'
+    if j =~ pattern
+      let j = substitute(j, pattern, '', 'g')
+      execute "normal " . j . "\<c-i>"
+    else
+      execute "normal " . j . "\<c-o>"
+    endif
+  endif
 endfunction
 
-augroup lint_events
-  autocmd!
-  autocmd BufWritePost * call Lint()
-augroup end
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)

@@ -196,6 +196,14 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore "**/*.pyc"
       \ -g ""'
 
+if has("gui_running")
+    "echo "yes, we have a GUI"
+    set mouse=a
+else
+    "echo "Boring old console"
+    set mouse=
+endif
+
 " set viewoptions-=options
 " augroup vimrc
 "     autocmd BufWritePost *
@@ -211,3 +219,6 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 " autocmd BufWinLeave *.* mkview!
 " autocmd BufWinEnter *.* silent loadview
 set viewoptions=cursor,folds,slash,unix
+" Autocomplete silent messages
+set shortmess+=c
+

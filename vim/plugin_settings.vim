@@ -103,7 +103,22 @@ autocmd! BufWritePost,BufReadPost * Neomake
 " fast fold
 let g:js_fold = 1
 
+
+
 " deoplete
+"
+"
+let g:deoplete#omni#functions = {}
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+
+let g:deoplete#omni#functions.javascript = [
+      \ 'tern#Complete',
+      \ 'jspc#omni'
+      \]
+
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -181,23 +196,23 @@ map g# <Plug>(incsearch-nohl-g#)
 " let g:fixmyjs_executable = 'path/to/eslint'
 " let g:fixmyjs_engine = 'eslint'
 
-let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout"'
+let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout --cache"'
 let g:formatters_javascript = ['eslint']
-let g:autoformat_verbosemode=1
+" let g:autoformat_verbosemode=1
 " au BufWritePre *.js :Fixmyjs
 " au BufWritePre *.jsx :Fixmyjs
 au BufWrite * :Autoformat
 "
 
 let g:neomake_error_sign = {
-            \ 'text': '✗',
-            \ 'texthl': 'ErrorMsg',
-            \ }
+      \ 'text': '✗',
+      \ 'texthl': 'ErrorMsg',
+      \ }
 hi MyWarningMsg ctermbg=3 ctermfg=0
 let g:neomake_warning_sign = {
-            \ 'text': '>>',
-            \ 'texthl': 'MyWarningMsg',
-            \ }
+      \ 'text': '>>',
+      \ 'texthl': 'MyWarningMsg',
+      \ }
 
 " function! Lint()
 "   if &filetype =~ 'javascript'
@@ -218,6 +233,7 @@ let g:neomake_javascript_enabled_makers = ['eslint_d']
 " when switching/opening a JS buffer, set neomake's eslint path, and enable it as a maker
 " au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 "
+let g:used_javascript_libs = 'd3,react'
 function! GotoJump()
   jumps
   let j = input("Please select your jump: ")
@@ -241,3 +257,10 @@ map z*  <Plug>(asterisk-z*)
 map gz* <Plug>(asterisk-gz*)
 map z#  <Plug>(asterisk-z#)
 map gz# <Plug>(asterisk-gz#)
+
+
+" close the preview window when you're not using it
+let g:SuperTabClosePreviewOnPopupClose = 1
+" or just disable the preview entirely
+autocmd BufEnter * set completeopt-=preview
+

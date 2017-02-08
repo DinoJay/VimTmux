@@ -35,7 +35,7 @@ map Q <Nop>
 
 "Automatically create directories for backup and undo files
 "if !isdirectory(expand(s:dir))
-  "call system("mkdir -p " . expand(s:dir) . "/{backup,undo}")
+"call system("mkdir -p " . expand(s:dir) . "/{backup,undo}")
 "end
 
 " Allow easy navigation between wrapped lines.
@@ -63,7 +63,7 @@ map q: :q
 " http://vim.wikia.com/wiki/Copy_or_change_search_hit It allows for replacing
 " search matches with cs and then /././.
 vnoremap <silent> s //e<C-r>=&selection=='exclusive'?'+1':''<CR><CR>
-    \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
+      \:<C-u>call histdel('search',-1)<Bar>let @/=histget('search',-1)<CR>gv
 omap s :normal vs<CR>
 
 " Don't screw up folds when inserting text that might affect them, until
@@ -142,10 +142,24 @@ nnoremap <Leader>n :lprevious<CR>
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command -nargs=0 -bar Update if &modified
-                           \|    if empty(bufname('%'))
-                           \|        browse confirm write
-                           \|    else
-                           \|        confirm write
-                           \|    endif
-                           \|endif
+      \|    if empty(bufname('%'))
+        \|        browse confirm write
+        \|    else
+          \|        confirm write
+          \|    endif
+          \|endif
 nnoremap <silent> <C-S> :<C-u>Update<CR>
+
+function! GetVisual() range
+  let reg_save = getreg('"')
+  let regtype_save = getregtype('"')
+  let cb_save = &clipboard
+  set clipboard&
+  normal! ""gvy
+  let selection = getreg('"')
+  call setreg('"', reg_save, regtype_save)
+  let &clipboard = cb_save
+  return selection
+endfunction
+
+vmap <leader>z :%s/<c-r>=GetVisual()<cr>/

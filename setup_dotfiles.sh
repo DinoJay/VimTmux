@@ -60,4 +60,10 @@ if ! command_exists node ; then
   sudo apt-get install -y nodejs
 fi
 
-sudo npm i eslint_d --global
+if ! command_exists eslint_d ; then
+  sudo npm i eslint_d --global
+fi
+
+if ! command_exists tern ; then
+  sudo npm i tern --global
+fi

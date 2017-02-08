@@ -44,11 +44,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
 " Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
 Plug 'Konfekt/FastFold'
 " Plug 'vim-scripts/JavaScript-Indent'
-Plug 'pangloss/vim-javascript'
-
 Plug 'ervandew/supertab'
 " Plug 'bigfish/vim-js-context-coloring'
 " Plug 'jason0x43/vim-js-indent'
@@ -81,14 +78,20 @@ Plug 'terryma/vim-expand-region'
 " Indentation Highlighting
 " Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'marijnh/tern_for_vim'
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+
 " Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 " Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
 
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/vim-asterisk'
@@ -99,6 +102,12 @@ Plug 'haya14busa/vim-asterisk'
 " Plug 'mustache/vim-mustache-handlebars'
 " Plug 'othree/html5-syntax.vim'
 " Plug 'othree/html5.vim'
+Plug 'othree/yajs.vim'
+Plug 'vim-scripts/SyntaxComplete'
+Plug 'othree/javascript-libraries-syntax.vim'
+
+" Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
 " Plug 'neovim/node-host', { 'do': 'npm install' }
 " Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 
@@ -121,14 +130,12 @@ Plug 'chrisbra/Colorizer'
 " Plug 'Slava/vim-spacebars'
 
 " ultisnips start, not working yet
-" Plug 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
 " Plug 'cmather/vim-meteor-snippets'
 
 " Plug 'maksimr/vim-jsbeautify'
-Plug 'ruanyl/vim-fixmyjs'
+" Plug 'ruanyl/vim-fixmyjs'
 " Plug 'benjie/neomake-local-eslint.vim'
 "
 " Plug 'jaawerth/nrun.vim'

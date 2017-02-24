@@ -1,5 +1,6 @@
 " leader key
 let mapleader = ","
+" let mapleader = "\<Space>"
 
 " insert new line without entering insert mode
 nmap <S-Enter> O<Esc>j
@@ -92,19 +93,6 @@ nnoremap k gk
 
 " cnoremap ö [
 " cnoremap ä ]
-" TODO: vertical movement
-nnoremap ö {
-nnoremap ä }
-nnoremap ß /
-vnoremap ö {
-vnoremap ä }
-vnoremap ß /
-
-
-" TODO: find better way
-autocmd FileType javascript vnoremap <buffer> <silent> <leader> f :call JsBeautify()<cr>
-autocmd FileType html vnoremap <buffer> <silent> <leader> f :call RangeHtmlBeautify()<cr>
-autocmd FileType css vnoremap <buffer> <buffer> <silent> f :call RangeCSSBeautify()<cr>
 
 autocmd BufNewFile,BufRead *.less set filetype=less
 autocmd FileType less set omnifunc=csscomplete#CompleteCSS

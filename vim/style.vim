@@ -32,6 +32,19 @@ let indent_guides_guide_size = 1
 " set line length marker
 set colorcolumn=80
 
+" hi Cursor guifg=#121212 guibg=#afd700
+
+if &term =~ "xterm\\|rxvt"
+  " use an orange cursor in insert mode
+  let &t_SI = "\<Esc>]12;white\x7"
+  " use a red cursor otherwise
+  let &t_EI = "\<Esc>]12;blue\x7"
+  silent !echo -ne "\033]12;blue\007"
+  " reset cursor when vim exits
+  autocmd VimLeave * silent !echo -ne "\033]112\007"
+  " use \003]12;gray\007 for gnome-terminal
+endif
+
 " highlight crusor
 "highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 " set cursorline

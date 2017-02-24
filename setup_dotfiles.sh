@@ -67,3 +67,13 @@ fi
 if ! command_exists tern ; then
   sudo npm i tern --global
 fi
+
+
+if ! command_exists cargo ; then
+  sudo apt-get install cargo
+fi
+
+if ! command_exists ripgrep ; then
+  cargo install ripgrep
+fi
+

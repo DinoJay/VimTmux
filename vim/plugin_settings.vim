@@ -30,14 +30,19 @@ set wildmode=longest,full
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_error_symbol = "✗"
 " Syntastic Errors
-map <silent> <Leader>e :Errors<CR>
-map <silent> <leader>ln :lnext<CR>
-map <silent> <leader>lp :lprev<CR>
+" map <silent> <Leader>e :Errors<CR>
+" map <silent> <leader>ln :lnext<CR>
+" map <silent> <leader>lp :lprev<CR>
 
 " neomake
 let g:neomake_list_height = 2
 let g:neomake_open_list = 2
 let g:neomake_verbose = 3
+
+nnoremap <Leader>m :lnext<CR>
+nnoremap <Leader>n :lprevious<CR>
+nnoremap <Leader>e :ll<CR>
+nnoremap <Leader>n :lprevious<CR>
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
 " let g:neomake_javascript_enabled_makers = ['eslint']
@@ -103,8 +108,6 @@ autocmd! BufWritePost,BufReadPost * Neomake
 " fast fold
 let g:js_fold = 1
 
-
-
 " deoplete
 "
 "
@@ -163,6 +166,10 @@ let g:mta_filetypes = {
       \ 'jinja' : 1,
       \ 'javascript' : 1,
       \}
+
+let g:mta_use_matchparen_group = 0
+" let g:mta_set_default_matchtag_color = 0
+highlight MatchTag ctermfg=white ctermbg=grey guifg=black guibg=lightgreen
 
 
 "

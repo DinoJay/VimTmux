@@ -123,3 +123,4 @@ export ANDROID_HOME=/home/djan/Android/Sdk
 
 export PATH=${PATH}:/home/djan/Android/Sdk/platform-tools:/home/djan/Android/Sdk/tools
 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'

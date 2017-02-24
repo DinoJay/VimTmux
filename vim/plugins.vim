@@ -23,16 +23,21 @@ Plug 'chriskempson/base16-vim'
 Plug 'sjl/badwolf/'
 Plug 'adlawson/vim-sorcerer'
 Plug 'rakr/vim-two-firewatch'
+Plug 'rakr/vim-one'
+Plug 'lifepillar/vim-solarized8'
+
 Plug 'blueyed/vim-diminactive'
 Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/vim-colorscheme-switcher'
 Plug 'roosta/vim-srcery'
 Plug 'jacoborus/tender'
 Plug 'xolox/vim-misc'
+Plug 'kamwitsta/mythos'
+Plug 'kamwitsta/nordisk'
 
+Plug 'vim-scripts/vim-colorscheme-switcher'
 " TODO: not working
 " Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'luochen1990/rainbow'
+" Plug 'luochen1990/rainbow'
 " markdown
 Plug 'shime/vim-livedown', {'for': 'markdown'}
 Plug 'dag/vim2hs', {'for': 'haskell'}
@@ -142,7 +147,7 @@ Plug 'chrisbra/Colorizer'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'Chiel92/vim-autoformat'
 " Plug 'einars/js-beautify'
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux'

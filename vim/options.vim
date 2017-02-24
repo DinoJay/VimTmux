@@ -222,3 +222,72 @@ set viewoptions=cursor,folds,slash,unix
 " Autocomplete silent messages
 set shortmess+=c
 
+fun! SearchHighlight()
+  silent! call matchdelete(b:ring)
+  let b:ring = matchadd('ErrorMsg', '\c\%#' . @/, 101)
+endfun
+
+fun! SearchNext()
+  try
+    execute 'normal! ' . 'Nn'[v:searchforward]
+  catch /E385:/
+    echohl ErrorMsg | echo "E385: search hit BOTTOM without match for: " . @/ | echohl None
+  endtry
+  call SearchHighlight()
+endfun
+
+fun! SearchPrev()
+  try
+    execute 'normal! ' . 'nN'[v:searchforward]
+  catch /E384:/
+    echohl ErrorMsg | echo "E384: search hit TOP without match for: " . @/ | echohl None
+  endtry
+  call SearchHighlight()
+endfun
+
+" Highlight entry
+nnoremap <silent> n :call SearchNext()<CR>
+nnoremap <silent> N :call SearchPrev()<CR>
+
+" Use <C-L> to clear some highlighting
+nnoremap <silent> <C-L> :silent! call matchdelete(b:ring)<CR>:nohlsearch<CR>:set nolist nospell<CR><C-L>
+
+" second open file in read only!
+let s:swapCheckEnabled = 0
+let s:_shm = &shm
+function! ToggleSwapCheck()
+  let s:swapCheckEnabled = !s:swapCheckEnabled
+  if !s:swapCheckEnabled
+    let &shm = s:_shm
+  endif
+  aug CheckSwap
+    au!
+    if s:swapCheckEnabled
+      set shm+=A
+      au BufReadPre * call CheckSwapFile()
+      au BufRead * call WarnSwapFile()
+    endif
+  aug END
+endfunction
+call ToggleSwapCheck()
+
+function! CheckSwapFile()
+  if !exists('*GetVimCmdOutput') || !&swapfile || !s:swapCheckEnabled
+    return
+  endif
+
+  let swapname = GetVimCmdOutput('swapname')
+  if swapname =~ '\.sw[^p]$'
+    set ro
+    let b:_warnSwap = 1
+  endif
+endfunction
+
+function! WarnSwapFile()
+  if exists('b:_warnSwap') && b:_warnSwap && &swapfile
+    echohl ErrorMsg | echomsg "File: \"" . bufname('%') .
+          \ "\" is opened readonly, as a swapfile already existed."
+          \ | echohl NONE
+    unlet b:_warnSwap
+  endif
+endfunction

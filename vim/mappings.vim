@@ -124,9 +124,6 @@ map <Leader>j %!python -m json.tool<CR>
 " xmap < [
 " xmap > ]
 
-nnoremap <Leader>m :lnext<CR>
-nnoremap <Leader>n :lprevious<CR>
-
 " If the current buffer has never been saved, it will have no name,
 " call the file browser to save it, otherwise just save it.
 command -nargs=0 -bar Update if &modified
@@ -151,3 +148,15 @@ function! GetVisual() range
 endfunction
 
 vmap <leader>z :%s/<c-r>=GetVisual()<cr>/
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+

@@ -75,6 +75,7 @@ Plug 'tomtom/tcomment_vim' " Comment things out
 
 "fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -95,6 +96,8 @@ Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'tpope/vim-unimpaired'
 " Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
+Plug 'romainl/vim-qf'
+
 
 " Plug 'majutsushi/tagbar'
 Plug 'Valloric/MatchTagAlways'

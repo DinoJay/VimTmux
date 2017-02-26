@@ -123,4 +123,7 @@ export ANDROID_HOME=/home/djan/Android/Sdk
 
 export PATH=${PATH}:/home/djan/Android/Sdk/platform-tools:/home/djan/Android/Sdk/tools
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# TODO: add .git
+# export FZF_DEFAULT_COMMAND='rg --hidden --files --follow --glob "!node_modules/*"'
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --hidden --follow --glob "!.git/*"'

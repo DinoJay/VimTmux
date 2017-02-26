@@ -1,9 +1,10 @@
 " Plugins Settings
 
+let g:ctrlp_map = '<c-y>'
 " ctrl-p ignore
 set wildignore+=*/packages/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|packages)$'
-let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
+" let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -14,6 +15,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 " tagbar
 nmap <C-t> :TagbarToggle<CR>
+
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
+endif
+
 
 " Autocomplete
 " let g:ycm_add_preview_to_completeopt=0
@@ -271,3 +279,58 @@ let g:SuperTabClosePreviewOnPopupClose = 1
 " or just disable the preview entirely
 autocmd BufEnter * set completeopt-=preview
 
+
+
+let g:fzf_layout = { 'down': '~20%' }
+let g:fzf_files_options =
+      \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+command! -bang FLines call fzf#vim#grep(
+      \ 'grep -vnITr --color=always --exclude-dir=".svn" --exclude-dir=".git" --exclude=tags --exclude=*\.pyc --exclude=*\.exe --exclude=*\.dll --exclude=*\.zip --exclude=*\.gz "^$" --exclude=*\node_modules/*',
+      \ 0,
+      \ {'options': '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'})
+
+nnoremap <silent> <leader>e :FLines<cr>
+
+
+function! s:find_root()
+  for vcs in ['.git', '.svn', '.hg']
+    let dir = finddir(vcs.'/..', ';')
+    if !empty(dir)
+      execute 'FZF' dir
+      return
+    endif
+  endfor
+  FZF
+endfunction
+
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --ignore-case --hidden --follow '.shellescape(<q-args>), 1,  {'dir': s:find_git_root(), 'options': g:fzf_files_options})
+
+set grepprg=rg\ --vimgrep
+
+" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, fzf#vim#with_preview({ 'bottom': '50%', 'dir': s:find_git_root() }),
+      \   <bang>0)
+
+
+nmap <C-p> :Rg<CR>
+
+
+
+" quickfix window
+let g:qf_loclist_window_bottom=0

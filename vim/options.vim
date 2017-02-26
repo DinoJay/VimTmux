@@ -96,17 +96,17 @@ function! CloseWindowOrKillBuffer()
 endfunction
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
-" Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files
-" for fast listing. Because we use fast strategies, disable caching.
-let g:ctrlp_use_caching = 0
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git',
-        \ 'cd %s && git ls-files . -co --exclude-standard',
-        \ 'find %s -type f' ]
-endif
+" " Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files
+" " for fast listing. Because we use fast strategies, disable caching.
+" let g:ctrlp_use_caching = 0
+" if executable('ag')
+"   set grepprg=ag\ --nogroup\ --nocolor
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" else
+"   let g:ctrlp_user_command = ['.git',
+"         \ 'cd %s && git ls-files . -co --exclude-standard',
+"         \ 'find %s -type f' ]
+" endif
 
 " Make sure pasting in visual mode doesn't replace paste buffer
 function! RestoreRegister()
@@ -195,6 +195,8 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .DS_Store
       \ --ignore "**/*.pyc"
       \ -g ""'
+
+let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
 
 if has("gui_running")
   "echo "yes, we have a GUI"

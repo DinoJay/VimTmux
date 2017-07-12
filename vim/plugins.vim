@@ -10,6 +10,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " colors
 Plug 'Lokaltog/vim-distinguished'
 Plug 'Slava/vim-colors-tomorrow'
+Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'sheerun/vim-wombat-scheme'
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'w0ng/vim-hybrid'
@@ -33,6 +34,7 @@ Plug 'jacoborus/tender'
 Plug 'xolox/vim-misc'
 Plug 'kamwitsta/mythos'
 Plug 'kamwitsta/nordisk'
+Plug 'mhartington/oceanic-next'
 
 Plug 'vim-scripts/vim-colorscheme-switcher'
 " TODO: not working
@@ -58,7 +60,7 @@ Plug 'ervandew/supertab'
 
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/restore_view.vim'
-Plug 'accelerated-smooth-scroll'
+" Plug 'accelerated-smooth-scroll'
 
 Plug 'rbong/vim-vertical'
 Plug 'joeytwiddle/sexy_scroller.vim'
@@ -70,7 +72,7 @@ Plug 'joeytwiddle/sexy_scroller.vim'
 Plug 'elzr/vim-json'
 " Automatically match pairs intelligently.
 Plug 'Raimondi/delimitMate'
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim' " Comment things out
 
 "fuzzy finder
@@ -85,7 +87,8 @@ Plug 'terryma/vim-expand-region'
 " Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'SirVer/ultisnips'
+" TODO: does not work under neovim unstable
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
@@ -99,8 +102,9 @@ Plug 'benekastah/neomake'
 Plug 'romainl/vim-qf'
 
 
-" Plug 'majutsushi/tagbar'
-Plug 'Valloric/MatchTagAlways'
+Plug 'majutsushi/tagbar'
+" Plug 'Valloric/MatchTagAlways'
+Plug 'othree/xml.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/vim-asterisk'
 
@@ -110,18 +114,23 @@ Plug 'haya14busa/vim-asterisk'
 " Plug 'mustache/vim-mustache-handlebars'
 " Plug 'othree/html5-syntax.vim'
 " Plug 'othree/html5.vim'
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
 Plug 'vim-scripts/SyntaxComplete'
 Plug 'othree/javascript-libraries-syntax.vim'
 
 " Plug 'pangloss/vim-javascript'
-" Plug 'jelera/vim-javascript-syntax'
+" Plug 'othree/yajs'
+Plug 'jelera/vim-javascript-syntax'
 " Plug 'neovim/node-host', { 'do': 'npm install' }
 " Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
+
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'LeonB/HTML-AutoCloseTag'
 
 Plug 'godlygeek/tabular'
 
 Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
 "Plug 'plasticboy/vim-markdown'
 Plug 'EinfachToll/DidYouMean'
 " smart pairs, easily select closures of brackets
@@ -139,16 +148,24 @@ Plug 'chrisbra/Colorizer'
 
 " ultisnips start, not working yet
 
+" ES2015 code snippets (Optional)
+Plug 'epilande/vim-es2015-snippets'
+
+" React code snippets
+Plug 'epilande/vim-react-snippets'
+
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'cmather/vim-meteor-snippets'
 
 " Plug 'maksimr/vim-jsbeautify'
 " Plug 'ruanyl/vim-fixmyjs'
-" Plug 'benjie/neomake-local-eslint.vim'
 "
 " Plug 'jaawerth/nrun.vim'
 Plug 'benjie/neomake-local-eslint.vim'
-Plug 'Chiel92/vim-autoformat'
+
+" Plug 'jaawerth/neomake-local-eslint-first'
+" Plug 'Chiel92/vim-autoformat'
+Plug 'sbdchd/neoformat'
 " Plug 'einars/js-beautify'
 " Plug 'junegunn/rainbow_parentheses.vim'
 

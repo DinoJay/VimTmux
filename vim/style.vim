@@ -1,5 +1,9 @@
+" set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
+" set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
 set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+" set term=screen-256color
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " use 256 colors in Console mode if we think the terminal supports it
 " if &term =~? 'mlterm\|xterm'
 " let g:tomorrow_termcolors=256
@@ -15,7 +19,7 @@ syntax enable
 " set t_Co=256
 set background=dark " or light if you prefer the light version
 let g:two_firewatch_italics=1
-colo two-firewatch
+colo base16-eighties
 let g:airline_theme='twofirewatch' " if you have Airline installed and want the associated theme
 " let g:airline_theme='twofirewatch'
 " let g:tmuxline_theme = 'twofirewatch'
@@ -45,6 +49,10 @@ if &term =~ "xterm\\|rxvt"
   " use \003]12;gray\007 for gnome-terminal
 endif
 
+hi Normal ctermbg=None
+
 " highlight crusor
 "highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-" set cursorline
+ set cursorline
+
+

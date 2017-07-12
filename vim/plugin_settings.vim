@@ -31,16 +31,6 @@ endif
 " For autocompletion, complete as much as you can.
 set wildmode=longest,full
 
-" syntastic
-" let g:syntastic_check_on_open=1
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_python_checkers = ['flake8']
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_error_symbol = "✗"
-" Syntastic Errors
-" map <silent> <Leader>e :Errors<CR>
-" map <silent> <leader>ln :lnext<CR>
-" map <silent> <leader>lp :lprev<CR>
 
 " neomake
 let g:neomake_list_height = 2
@@ -51,6 +41,8 @@ nnoremap <Leader>m :lnext<CR>
 nnoremap <Leader>n :lprevious<CR>
 nnoremap <Leader>e :ll<CR>
 nnoremap <Leader>n :lprevious<CR>
+
+" map <Leader> <Plug>(easymotion-prefix)
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
 " let g:neomake_javascript_enabled_makers = ['eslint']
@@ -107,8 +99,8 @@ nnoremap <Leader>n :lprevious<CR>
 "
 autocmd! BufWritePost,BufReadPost * Neomake
 
-" autocmd! BufWritePost *.js silent! Neomake
-" autocmd! BufWritePost *.jsx silent! Neomake
+autocmd! BufWritePost *.js silent! Neomake
+autocmd! BufWritePost *.jsx silent! Neomake
 
 " autocmd! FileType javascript,BufWinEnter,BufWritePost * Neomake
 
@@ -160,6 +152,7 @@ augroup end
 " nmap <Leader><Space>p :lprev<CR>      " previous error/warning
 " ultisnips
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -207,17 +200,25 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 
-" let g:fixmyjs_use_local = 1
-" let g:fixmyjs_executable = 'path/to/eslint'
-" let g:fixmyjs_engine = 'eslint'
 
-let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout --cache"'
-let g:formatters_javascript = ['eslint']
+" let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout --cache"'
+" let g:formatters_javascript = ['eslint']
 " let g:autoformat_verbosemode=1
-" au BufWritePre *.js :Fixmyjs
-" au BufWritePre *.jsx :Fixmyjs
-au BufWrite * :Autoformat
-"
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
+
+let g:neoformat_enabled_javascript = ['eslint_d']
+
+" autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
+" autocmd BufWritePre,TextChanged,InsertLeave *.jsx Neoformat
+
+" Use formatprg when available
+" let g:neoformat_try_formatprg = 1
+" https://github.com/sbdchd/neoformat/issues/25
+" let g:neoformat_only_msg_on_error = 1
+
 
 let g:neomake_error_sign = {
       \ 'text': '✗',
@@ -243,7 +244,12 @@ let g:neomake_warning_sign = {
 " augroup end
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
-let g:neomake_javascript_enabled_makers = ['eslint_d']
+let g:neomake_javascript_enabled_makers = ['eslint']
+" load local eslint in the project root
+" modified from https://github.com/mtscout6/syntastic-local-eslint.vim
+" let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+" let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+
 "  let g:neomake_javascript_eslint_exe =
 " when switching/opening a JS buffer, set neomake's eslint path, and enable it as a maker
 " au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')

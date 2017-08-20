@@ -60,7 +60,7 @@ Plug 'ervandew/supertab'
 
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/restore_view.vim'
-" Plug 'accelerated-smooth-scroll'
+" Plug 'accelerate-smooth-scroll'
 
 Plug 'rbong/vim-vertical'
 Plug 'joeytwiddle/sexy_scroller.vim'
@@ -76,9 +76,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tomtom/tcomment_vim' " Comment things out
 
 "fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/denite.nvim'
-Plug 'FelikZ/ctrlp-py-matcher'
+" Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -89,21 +89,22 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 " TODO: does not work under neovim unstable
 " Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'honza/vim-snippets'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
-" Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 " Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
-Plug 'romainl/vim-qf'
+" Plug 'romainl/vim-qf'
+Plug 'blueyed/vim-qf_resize'
 
 
 Plug 'majutsushi/tagbar'
-" Plug 'Valloric/MatchTagAlways'
+Plug 'Valloric/MatchTagAlways'
 Plug 'othree/xml.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/vim-asterisk'
@@ -117,6 +118,7 @@ Plug 'haya14busa/vim-asterisk'
 " Plug 'othree/yajs.vim'
 Plug 'vim-scripts/SyntaxComplete'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'bounceme/poppy.vim'
 
 " Plug 'pangloss/vim-javascript'
 " Plug 'othree/yajs'
@@ -149,10 +151,10 @@ Plug 'chrisbra/Colorizer'
 " ultisnips start, not working yet
 
 " ES2015 code snippets (Optional)
-Plug 'epilande/vim-es2015-snippets'
+" Plug 'epilande/vim-es2015-snippets'
 
 " React code snippets
-Plug 'epilande/vim-react-snippets'
+" Plug 'epilande/vim-react-snippets'
 
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'cmather/vim-meteor-snippets'

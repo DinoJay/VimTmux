@@ -210,6 +210,7 @@ augroup fmt
 augroup END
 
 let g:neoformat_enabled_javascript = ['eslint_d']
+let g:neoformat_enabled_jsx = ['eslint_d']
 
 " autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
 " autocmd BufWritePre,TextChanged,InsertLeave *.jsx Neoformat
@@ -339,4 +340,13 @@ nmap <C-p> :Rg<CR>
 
 
 " quickfix window
-let g:qf_loclist_window_bottom=0
+"
+" let g:qf_auto_resize=1
+" let g:qf_max_height=100
+
+" au! cursormoved * call PoppyInit()
+"
+
+nnoremap } :Vertical f<cr>
+nnoremap { :Vertical b<cr>
+

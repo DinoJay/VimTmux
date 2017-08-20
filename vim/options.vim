@@ -63,6 +63,8 @@ set viminfo='100,f1
 " Use dash as word separator. TODO: understand
 set iskeyword+=-
 
+
+
 " Disable output, vcs, archive, rails, temp and backup files.
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz

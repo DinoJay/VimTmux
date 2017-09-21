@@ -101,6 +101,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'benekastah/neomake'
 " Plug 'romainl/vim-qf'
 Plug 'blueyed/vim-qf_resize'
+Plug 'othree/fecompressor.vim'
 
 
 Plug 'majutsushi/tagbar'
@@ -166,7 +167,7 @@ Plug 'chrisbra/Colorizer'
 Plug 'benjie/neomake-local-eslint.vim'
 
 " Plug 'jaawerth/neomake-local-eslint-first'
-" Plug 'Chiel92/vim-autoformat'
+Plug 'Chiel92/vim-autoformat'
 Plug 'sbdchd/neoformat'
 " Plug 'einars/js-beautify'
 " Plug 'junegunn/rainbow_parentheses.vim'

@@ -211,6 +211,7 @@ augroup END
 
 let g:neoformat_enabled_javascript = ['eslint_d']
 let g:neoformat_enabled_jsx = ['eslint_d']
+let g:neoformat_enabled_html = ['tidy']
 
 " autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
 " autocmd BufWritePre,TextChanged,InsertLeave *.jsx Neoformat
@@ -246,6 +247,8 @@ let g:neomake_warning_sign = {
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_html_enabled_makers = ['tidy', 'jsbeautify']
+let g:neomake_php_enabled_makers = ['tidy', 'jsbeautify']
 " load local eslint in the project root
 " modified from https://github.com/mtscout6/syntastic-local-eslint.vim
 " let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')

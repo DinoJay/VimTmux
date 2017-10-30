@@ -128,7 +128,10 @@ Plug 'jelera/vim-javascript-syntax'
 " Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'LeonB/HTML-AutoCloseTag'
+Plug 'gcmt/taboo.vim'
+" Plug 'LeonB/HTML-AutoCloseTag'
+
+Plug 'alvan/vim-closetag'
 
 Plug 'godlygeek/tabular'
 
@@ -150,12 +153,13 @@ Plug 'chrisbra/Colorizer'
 " Plug 'Slava/vim-spacebars'
 
 " ultisnips start, not working yet
+Plug 'SirVer/ultisnips'
 
 " ES2015 code snippets (Optional)
-" Plug 'epilande/vim-es2015-snippets'
+Plug 'epilande/vim-es2015-snippets'
 
 " React code snippets
-" Plug 'epilande/vim-react-snippets'
+Plug 'epilande/vim-react-snippets'
 
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'cmather/vim-meteor-snippets'

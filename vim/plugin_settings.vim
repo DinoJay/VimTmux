@@ -46,7 +46,7 @@ nnoremap <Leader>n :lprevious<CR>
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
 " let g:neomake_javascript_enabled_makers = ['eslint']
-" " let g:neomake_jsx_enabled_makers = ['eslint']
+" let g:neomake_jsx_enabled_makers = ['eslint']
 "
 " function! NeomakeESlintChecker()
 "   let l:npm_bin = ''
@@ -99,8 +99,8 @@ nnoremap <Leader>n :lprevious<CR>
 "
 autocmd! BufWritePost,BufReadPost * Neomake
 
-autocmd! BufWritePost *.js silent! Neomake
-autocmd! BufWritePost *.jsx silent! Neomake
+autocmd! BufWritePost *.js silent! Neomake eslint
+autocmd! BufWritePost *.jsx silent! Neomake eslint
 
 " autocmd! FileType javascript,BufWinEnter,BufWritePost * Neomake
 
@@ -211,6 +211,7 @@ augroup END
 
 let g:neoformat_enabled_javascript = ['eslint_d']
 let g:neoformat_enabled_jsx = ['eslint_d']
+let g:neoformat_enabled_js = ['eslint_d']
 let g:neoformat_enabled_html = ['tidy']
 
 " autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
@@ -245,8 +246,16 @@ let g:neomake_warning_sign = {
 "   autocmd BufWritePost * call Lint()
 " augroup end
 
+function! neoformat#formatters#javascript#prettiereslint() abort
+    return {
+        \ 'exe': 'prettier-eslint',
+        \ 'args': ['--stdin'],
+        \ 'stdin': 1,
+        \ }
+endfunction
+
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['prettiereslint']
 let g:neomake_html_enabled_makers = ['tidy', 'jsbeautify']
 let g:neomake_php_enabled_makers = ['tidy', 'jsbeautify']
 " load local eslint in the project root
@@ -350,6 +359,11 @@ nmap <C-p> :Rg<CR>
 " au! cursormoved * call PoppyInit()
 "
 
+" TODO: enable in normal mode
 nnoremap } :Vertical f<cr>
 nnoremap { :Vertical b<cr>
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
+
 

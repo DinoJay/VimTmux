@@ -154,18 +154,17 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
-if &term == 'screen-256color'
-    let g:tmux_navigator_no_mappings = 1
-    nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-    nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-    nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-    nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-endif
+" if &term == 'screen-256color'
+"     let g:tmux_navigator_no_mappings = 1
+"     nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+"     nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+"     nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+"     nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+" endif
 
 
 nnoremap <silent> <leader>t :$tabnew<CR>
 
-let g:taboo_tab_format = " tab:%N%m "
 
 nnoremap <leader>1 1gt
 nnoremap <leader>2 2gt

@@ -26,6 +26,9 @@ Plug 'adlawson/vim-sorcerer'
 Plug 'rakr/vim-two-firewatch'
 Plug 'rakr/vim-one'
 Plug 'lifepillar/vim-solarized8'
+Plug 'trevordmiller/nova-vim'
+Plug 'mhartington/oceanic-next'
+
 
 Plug 'blueyed/vim-diminactive'
 Plug 'morhetz/gruvbox'
@@ -78,6 +81,8 @@ Plug 'tomtom/tcomment_vim' " Comment things out
 "fuzzy finder
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/denite.nvim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 " Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -90,17 +95,32 @@ Plug 'nathanaelkane/vim-indent-guides'
 " TODO: does not work under neovim unstable
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
+" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+"
+" Plug 'pangloss/vim-javascript'
+" Plug 'othree/yajs'
+Plug 'jelera/vim-javascript-syntax'
+" Plug 'neovim/node-host', { 'do': 'npm install' }
+" Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug '1995eaton/vim-better-javascript-completion', { 'for': [ 'javascript', 'js', 'jsx' ]}
+" Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]}
+Plug 'gavocanov/vim-js-indent', { 'for': [ 'javascript', 'js', 'jsx' ]}
+
+" Toolkit - no syntax highlighting https://github.com/moll/vim-node
+Plug 'moll/vim-node', { 'for': [ 'javascript', 'js', 'jsx' ]}
+
+" Plug 'chemzqm/vim-jsx-improve', { 'for': [ 'javascript', 'js', 'jsx' ]}
 
 Plug 'scrooloose/nerdtree'
 " Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-unimpaired'
 " Plug 'scrooloose/syntastic'
-Plug 'benekastah/neomake'
-" Plug 'romainl/vim-qf'
-Plug 'blueyed/vim-qf_resize'
+" Plug 'benekastah/neomake'
+Plug 'w0rp/ale'
+Plug 'romainl/vim-qf'
+" Plug 'blueyed/vim-qf_resize'
 Plug 'othree/fecompressor.vim'
 
 
@@ -121,17 +141,13 @@ Plug 'vim-scripts/SyntaxComplete'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'bounceme/poppy.vim'
 
-" Plug 'pangloss/vim-javascript'
-" Plug 'othree/yajs'
-Plug 'jelera/vim-javascript-syntax'
-" Plug 'neovim/node-host', { 'do': 'npm install' }
-" Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gcmt/taboo.vim'
 " Plug 'LeonB/HTML-AutoCloseTag'
 
-Plug 'alvan/vim-closetag'
+" Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-ragtag'
 
 Plug 'godlygeek/tabular'
 
@@ -168,11 +184,11 @@ Plug 'epilande/vim-react-snippets'
 " Plug 'ruanyl/vim-fixmyjs'
 "
 " Plug 'jaawerth/nrun.vim'
-Plug 'benjie/neomake-local-eslint.vim'
+" Plug 'benjie/neomake-local-eslint.vim'
 
 " Plug 'jaawerth/neomake-local-eslint-first'
 Plug 'Chiel92/vim-autoformat'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 " Plug 'einars/js-beautify'
 " Plug 'junegunn/rainbow_parentheses.vim'
 
@@ -182,6 +198,9 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'ryanoasis/vim-devicons'
 
+Plug 'rhysd/clever-f.vim'
+
+Plug 'mhinz/vim-startify'
 " Plug 'millermedeiros/vim-esformatter'
 
 call plug#end()

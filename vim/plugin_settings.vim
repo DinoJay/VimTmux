@@ -33,9 +33,9 @@ set wildmode=longest,full
 
 
 " neomake
-let g:neomake_list_height = 2
-let g:neomake_open_list = 2
-let g:neomake_verbose = 3
+" let g:neomake_list_height = 2
+" let g:neomake_open_list = 2
+" let g:neomake_verbose = 3
 
 nnoremap <Leader>m :lnext<CR>
 nnoremap <Leader>n :lprevious<CR>
@@ -97,10 +97,10 @@ nnoremap <Leader>n :lprevious<CR>
 "
 " autocmd FileType javascript :call NeomakeESlintChecker()
 "
-autocmd! BufWritePost,BufReadPost * Neomake
-
-autocmd! BufWritePost *.js silent! Neomake eslint
-autocmd! BufWritePost *.jsx silent! Neomake eslint
+" autocmd! BufWritePost,BufReadPost * Neomake
+"
+" autocmd! BufWritePost *.js silent! Neomake eslint
+" autocmd! BufWritePost *.jsx silent! Neomake eslint
 
 " autocmd! FileType javascript,BufWinEnter,BufWritePost * Neomake
 
@@ -204,15 +204,16 @@ map g# <Plug>(incsearch-nohl-g#)
 " let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout --cache"'
 " let g:formatters_javascript = ['eslint']
 " let g:autoformat_verbosemode=1
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * Neoformat
-augroup END
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre * Neoformat
+" augroup END
+autocmd BufWritePre *.{js,jsx} ALEFix
 
-let g:neoformat_enabled_javascript = ['eslint_d']
-let g:neoformat_enabled_jsx = ['eslint_d']
-let g:neoformat_enabled_js = ['eslint_d']
-let g:neoformat_enabled_html = ['tidy']
+" let g:neoformat_enabled_javascript = ['eslint_d']
+" let g:neoformat_enabled_jsx = ['eslint_d']
+" let g:neoformat_enabled_js = ['eslint_d']
+" let g:neoformat_enabled_html = ['tidy']
 
 " autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
 " autocmd BufWritePre,TextChanged,InsertLeave *.jsx Neoformat
@@ -223,15 +224,26 @@ let g:neoformat_enabled_html = ['tidy']
 " let g:neoformat_only_msg_on_error = 1
 
 
-let g:neomake_error_sign = {
-      \ 'text': '✗',
-      \ 'texthl': 'ErrorMsg',
-      \ }
-hi MyWarningMsg ctermbg=3 ctermfg=0
-let g:neomake_warning_sign = {
-      \ 'text': '>>',
-      \ 'texthl': 'MyWarningMsg',
-      \ }
+" let g:neomake_error_sign = {
+"       \ 'text': '✗',
+"       \ 'texthl': 'ErrorMsg',
+"       \ }
+" hi MyWarningMsg ctermbg=3 ctermfg=0
+" let g:neomake_warning_sign = {
+"       \ 'text': '>>',
+"       \ 'texthl': 'MyWarningMsg',
+"       \ }
+
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
 
 " function! Lint()
 "   if &filetype =~ 'javascript'
@@ -246,18 +258,18 @@ let g:neomake_warning_sign = {
 "   autocmd BufWritePost * call Lint()
 " augroup end
 
-function! neoformat#formatters#javascript#prettiereslint() abort
-    return {
-        \ 'exe': 'prettier-eslint',
-        \ 'args': ['--stdin'],
-        \ 'stdin': 1,
-        \ }
-endfunction
+" function! neoformat#formatters#javascript#prettiereslint() abort
+"     return {
+"         \ 'exe': 'prettier-eslint',
+"         \ 'args': ['--stdin'],
+"         \ 'stdin': 1,
+"         \ }
+" endfunction
 
 " you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
-let g:neomake_javascript_enabled_makers = ['prettiereslint']
-let g:neomake_html_enabled_makers = ['tidy', 'jsbeautify']
-let g:neomake_php_enabled_makers = ['tidy', 'jsbeautify']
+" let g:neomake_javascript_enabled_makers = ['prettiereslint']
+" let g:neomake_html_enabled_makers = ['tidy', 'jsbeautify']
+" let g:neomake_php_enabled_makers = ['tidy', 'jsbeautify']
 " load local eslint in the project root
 " modified from https://github.com/mtscout6/syntastic-local-eslint.vim
 " let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
@@ -352,12 +364,17 @@ nmap <C-p> :Rg<CR>
 
 
 " quickfix window
-"
-" let g:qf_auto_resize=1
-" let g:qf_max_height=100
-
+let g:qf_auto_resize=1
+let g:qf_max_height=100
+let g:qf_loclist_window_bottom=0
+" let g:qf_loclist_window_bottom=1
 " au! cursormoved * call PoppyInit()
 "
+"
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
 
 " TODO: enable in normal mode
 nnoremap } :Vertical f<cr>
@@ -367,3 +384,5 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
 
 
+let g:clever_f_across_no_line = 1
+let g:clever_f_timeout_ms = 3000

@@ -200,7 +200,7 @@ Plug 'ryanoasis/vim-devicons'
 
 Plug 'rhysd/clever-f.vim'
 
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 " Plug 'millermedeiros/vim-esformatter'
 
 call plug#end()

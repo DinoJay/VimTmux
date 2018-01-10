@@ -237,10 +237,12 @@ autocmd BufWritePre *.{js,jsx} ALEFix
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'sass': ['prettier']
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'sass': ['prettier']
 \}
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1

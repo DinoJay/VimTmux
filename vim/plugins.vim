@@ -29,6 +29,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'trevordmiller/nova-vim'
 Plug 'mhartington/oceanic-next'
 
+Plug 'roxma/nvim-cm-tern', {'do': 'npm install'}
+
 
 Plug 'blueyed/vim-diminactive'
 Plug 'morhetz/gruvbox'
@@ -49,11 +51,10 @@ Plug 'dag/vim2hs', {'for': 'haskell'}
 " Plug 'junegunn/vim-pseudocl'
 " Plug 'junegunn/vim-oblique'
 
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 " change order of arguments
 Plug 'PeterRincker/vim-argumentative'
 " JSX Syntax highlighting
-" Plug 'mxw/vim-jsx'
 Plug 'Konfekt/FastFold'
 " Plug 'vim-scripts/JavaScript-Indent'
 Plug 'ervandew/supertab'
@@ -92,15 +93,20 @@ Plug 'terryma/vim-expand-region'
 " Plug 'Yggdroot/indentLine'
 Plug 'nathanaelkane/vim-indent-guides'
 
+Plug 'airblade/vim-rooter'
+
 " TODO: does not work under neovim unstable
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 " Plug 'marijnh/tern_for_vim', { 'do': 'npm i', 'for': 'javascript'}
 " Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 "
-" Plug 'pangloss/vim-javascript'
-" Plug 'othree/yajs'
-Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'gavocanov/vim-js-indent'
+Plug 'mxw/vim-jsx'
+" Plug 'othree/yajs.vim'
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'neoclide/vim-jsx-improve'
 " Plug 'neovim/node-host', { 'do': 'npm install' }
 " Plug 'billyvg/tigris.nvim', { 'do': './install.sh' }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
@@ -146,7 +152,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'gcmt/taboo.vim'
 " Plug 'LeonB/HTML-AutoCloseTag'
 
-" Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-ragtag'
 
 Plug 'godlygeek/tabular'
@@ -175,7 +181,7 @@ Plug 'SirVer/ultisnips'
 Plug 'epilande/vim-es2015-snippets'
 
 " React code snippets
-Plug 'epilande/vim-react-snippets'
+Plug 'DinoJay/vim-react-snippets'
 
 " Snippets are separated from the engine. Add this if you want them:
 " Plug 'cmather/vim-meteor-snippets'
@@ -190,10 +196,12 @@ Plug 'epilande/vim-react-snippets'
 Plug 'Chiel92/vim-autoformat'
 " Plug 'sbdchd/neoformat'
 " Plug 'einars/js-beautify'
-" Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainboear; rspec
 
 Plug 'edkolev/tmuxline.vim'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'benmills/vimux'
+Plug 'jgdavey/tslime.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'ryanoasis/vim-devicons'

@@ -118,15 +118,24 @@ if ! shopt -oq posix; then
   fi
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.tmux ] && source ~/.fzf.tmux
 
 export ANDROID_HOME=/home/djan/Android/Sdk
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
-# TODO: add .git
-# export FZF_DEFAULT_COMMAND='rg --hidden --files --follow --glob "!node_modules/*"'
-#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-export FZF_DEFAULT_COMMAND='rg --hidden --follow --glob "!.git/*"'
-export WINEARCH=win32
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# export FZF_DEFAULT_COMMAND='rg'
+# export FZF_CTRL_P_COMMAND="$FZF_DEFAULT_COMMAND"
 
+
+# Setting fd as the default source for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS='--height 10% --reverse --preview "head -100 {}" --bind "ctrl-v:execute(tmux split-window -h -f nvim {})+abort"'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_TMUX=1
+
+bind -x '"\C-p": fzf-tmux'

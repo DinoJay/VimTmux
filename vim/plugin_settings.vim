@@ -1,26 +1,36 @@
 " Plugins Settings
 
-let g:ctrlp_map = '<c-y>'
+" let g:ctrlp_map = '<c-y>'
 " ctrl-p ignore
-set wildignore+=*/packages/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|packages)$'
+" set wildignore+=*/packages/*,*.so,*.swp,*.zip
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|packages)$'
 " let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
 
 " Airline
 let g:airline_powerline_fonts = 1
 set laststatus=2
-let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+
+let g:airline#extensions#tabline#fnamemod = ':.'
+let g:airline#extensions#tabline#fnamecollapse = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+let g:airline_section_x=''
+let g:airline_section_b=''
+let g:airline_section_b=''
+let g:airline_section_z=''
+let g:airline_skip_empty_sections = 1
+" set title
 
 " tagbar
 nmap <C-t> :TagbarToggle<CR>
 
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
+" if executable('rg')
+"   set grepprg=rg\ --color=never
+"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+"   let g:ctrlp_use_caching = 0
+" endif
 
 
 " Autocomplete
@@ -246,6 +256,9 @@ let g:ale_fixers = {
 \}
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
+let g:ale_list_window_size = 10
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_lint_on_text_changed = 'never'
 
 " function! Lint()
 "   if &filetype =~ 'javascript'
@@ -314,23 +327,39 @@ autocmd BufEnter * set completeopt-=preview
 
 
 
-let g:fzf_layout = { 'down': '~20%' }
-let g:fzf_files_options =
-      \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+" let g:fzf_layout = { 'down': '~20%' }
+" let g:fzf_files_options =
+"       \ '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'
 
 " [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
+" let g:fzf_buffers_jump = 1
 
 " [[B]Commits] Customize the options used by 'git log':
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+" let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 
-command! -bang FLines call fzf#vim#grep(
-      \ 'grep -vnITr --color=always --exclude-dir=".svn" --exclude-dir=".git" --exclude=tags --exclude=*\.pyc --exclude=*\.exe --exclude=*\.dll --exclude=*\.zip --exclude=*\.gz "^$" --exclude=*\node_modules/*',
-      \ 0,
-      \ {'options': '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'})
+" command! -bang FLines call fzf#vim#grep(
+"       \ 'grep -vnITr --color=always --exclude-dir=".svn" --exclude-dir=".git" --exclude=tags --exclude=*\.pyc --exclude=*\.exe --exclude=*\.dll --exclude=*\.zip --exclude=*\.gz "^$" --exclude=*\node_modules/*',
+"       \ 0,
+"       \ {'options': '--preview "(highlight -O ansi {} || cat {}) 2> /dev/null | head -'.&lines.'"'})
+"
+" nnoremap <silent> <leader>e :FLines<cr>
 
-nnoremap <silent> <leader>e :FLines<cr>
+" This is the default extra ke plit-window -h
+" let g:fzf_action = {
+"   \ 'ctrl-x': '',
+"   \ 'ctrl-v': '' }
 
+" Default fzf layout
+" - down / up / left / right
+"
+" In Neovim, you can set up fzf window using a Vim command
+" let g:fzf_layout = { 'window': '10split enew' }
+
+" This is the default extra key bindings
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-x': 'split',
+"   \ 'ctrl-v': 'vsplit' }
 
 function! s:find_root()
   for vcs in ['.git', '.svn', '.hg']
@@ -350,18 +379,31 @@ endfunction
 command! ProjectFiles execute 'Files' s:find_git_root()
 
 
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --ignore-case --hidden --follow '.shellescape(<q-args>), 1,  {'dir': s:find_git_root(), 'options': g:fzf_files_options})
+" command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --ignore-case --hidden --follow '.shellescape(<q-args>), 1,  {'dir': s:find_git_root(), 'options': g:fzf_files_options})
 
 set grepprg=rg\ --vimgrep
+" ,ctrl-x:execute(tmux split-window nvim {})
+command! -bang -nargs=* Rg
+\ call fzf#run({ 'down': '20%', 'options':
+\ '--bind "ctrl-v:execute(tmux split-window -h -f -l 90 nvim {}),enter:execute(tmux select-pane -m nvim {})+abort"', 'sink': 'e'})
+
 
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+" command! -bang -nargs=* Rg
+"       \ call fzf#vim#grep(
+"       \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, fzf#vim#with_preview({ 'bottom': '50%', 'dir': s:find_git_root() }),
+" \ <bang>0)
+
 command! -bang -nargs=* Rg
       \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, fzf#vim#with_preview({ 'bottom': '50%', 'dir': s:find_git_root() }),
+      \   'rg --column --line-number --no-heading '.shellescape(<q-args>), 1, fzf#vim#with_preview({ 'bottom': '50%', 'dir': s:find_git_root() }),
       \   <bang>0)
 
 
 nmap <C-p> :Rg<CR>
+
+
+" nmap <C-p> :FZF<CR>
 
 
 
@@ -374,7 +416,7 @@ let g:qf_loclist_window_bottom=0
 "
 "
 aug QFClose
-  au!
+ au!
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
 
@@ -384,7 +426,6 @@ nnoremap { :Vertical b<cr>
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
-
 
 let g:clever_f_across_no_line = 1
 let g:clever_f_timeout_ms = 3000

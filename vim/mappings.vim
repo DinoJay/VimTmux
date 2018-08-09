@@ -178,6 +178,12 @@ noremap <leader>= <C-w>=
 " zoom split
 noremap <silent> <leader>z :tab split<CR>
 
+nnoremap <C-w> :tabnext<CR>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
 
 " --column: Show column number
 " --line-number: Show line number
@@ -189,4 +195,12 @@ noremap <silent> <leader>z :tab split<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
+
+
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command .shellescape(<q-args>), 1, <bang>0)
 

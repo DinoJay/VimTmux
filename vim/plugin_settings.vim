@@ -218,7 +218,7 @@ map g# <Plug>(incsearch-nohl-g#)
 "   autocmd!
 "   autocmd BufWritePre * Neoformat
 " augroup END
-autocmd BufWritePre *.{js,jsx} ALEFix
+autocmd BufWritePre *.{js,jsx,ts,tsx} ALEFix
 
 " let g:neoformat_enabled_javascript = ['eslint_d']
 " let g:neoformat_enabled_jsx = ['eslint_d']
@@ -247,11 +247,13 @@ autocmd BufWritePre *.{js,jsx} ALEFix
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
 \   'sass': ['prettier']
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
 \   'sass': ['prettier']
 \}
 let g:ale_set_quickfix = 1
@@ -424,7 +426,7 @@ aug END
 nnoremap } :Vertical f<cr>
 nnoremap { :Vertical b<cr>
 
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.erb,*.jsx,*.tsx"
 let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.erb'
 
 let g:clever_f_across_no_line = 1

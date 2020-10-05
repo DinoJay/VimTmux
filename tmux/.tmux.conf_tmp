@@ -1,0 +1,68 @@
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"# List of plugins
+
+# create new session
+bind C-c new-session
+
+# find session
+bind C-f command-prompt -p find-session 'switch-client -t %%'
+
+# pane navigation
+# bind -n ctrl-w select-pane -L  # move left
+bind -r j select-pane -D  # move down
+bind -r k select-pane -U  # move up
+bind -r l select-pane -R  # move right
+bind > swap-pane -D       # swap current pane with the next one
+bind < swap-pane -U       # swap current pane with the previous one
+
+# maximize current pane
+bind + run 'cut -c3- ~/.tmux.conf | sh -s maximize_pane'
+
+# pane resizing
+bind -r H resize-pane -L 2
+bind -r J resize-pane -D 2
+bind -r K resize-pane -U 2
+bind -r L resize-pane -R 2
+
+# window navigation
+bind -n F3 previous-window # select previous window
+bind -n F4 next-window     # select next window
+bind -r F2 new-window     # create new window with prefix
+
+
+# The above configuration provides Ctrl-h (left), Ctrl-j (down), Ctrl-k (up), and Ctrl-l (right) navigation between Vim splits and tmux panes.
+
+# is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+#     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+# bind-key -n C-h if-shell "$is_vim" "send-keys C-h"  "select-pane -L"
+# bind-key -n C-j if-shell "$is_vim" "send-keys C-j"  "select-pane -D"
+# bind-key -n C-k if-shell "$is_vim" "send-keys C-k"  "select-pane -U"
+# bind-key -n C-l if-shell "$is_vim" "send-keys C-l"  "select-pane -R"
+bind | split-window -h -c "#{pane_current_path}"
+
+# set-hook -g after-split-window "selectl even-vertical"
+
+set-window-option -g main-pane-width 90
+
+set -g status-right '#{prefix_highlight} | %a %Y-%m-%d %H:%M'
+
+set -g @continuum-restore 'on'
+# for vim
+set -g @resurrect-strategy-vim 'session'
+# for neovim
+set -g @resurrect-strategy-nvim 'session'
+
+# # List of plugins
+set -g @tpm_plugins '          \
+ tmux-plugins/tpm             \
+ tmux-plugins/tmux-sensible   \
+ tmux-plugins/tmux-resurrect  \
+ christoomey/vim-tmux-navigator \
+ tmux-plugins/tmux-prefix-highlight'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

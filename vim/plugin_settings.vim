@@ -7,7 +7,7 @@
 " let g:ctrlp_custom_ignore = '\v[\/]\.client/packages$'
 
 " Airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 set laststatus=2
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -121,27 +121,38 @@ let g:js_fold = 1
 " deoplete
 "
 "
-let g:deoplete#omni#functions = {}
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
+" let g:deoplete#omni#functions = {}
+" let g:deoplete#sources = {}
+" let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+" let g:tern#command = ['tern']
+" let g:tern#arguments = ['--persistent']
 
-let g:deoplete#omni#functions.javascript = [
-      \ 'tern#Complete',
-      \ 'jspc#omni'
-      \]
+" let g:deoplete#omni#functions.javascript = [
+"       \ 'tern#Complete',
+"       \ 'jspc#omni'
+"       \]
 
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
-" let g:deoplete#disable_auto_complete = 1
+" call deoplete#enable_logging('DEBUG', 'deoplete.log')
+
+" call deoplete#custom#option('auto_complete_delay', 200)
+
+
+    call deoplete#custom#option({
+    \ 'auto_complete_delay': 250,
+    \ 'auto_refresh_delay': 1000,
+    \ 'refresh_always': v:false,
+    \ })
+
+" g:nvim_typescript#max_completion_detail=10
+" let g:nvim_typescript#type_info_on_hold=1
+
+
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete
 " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\
 " tern
-autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+" autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
 let g:SuperTabDefaultCompletionType = '<c-n>'
 " omnifuncs
@@ -192,14 +203,6 @@ nnoremap <silent> <leader>ti :IndentGuidesToggle<CR>
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors=1
 
-" augroup indent_guide_settings
-"   autocmd!
-"   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermfg=white ctermbg=234
-"   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermfg=white ctermbg=236
-" augroup END
-
-" hayabusa incsearch
-" :h g:incsearch#auto_nohlsearch
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
@@ -211,91 +214,23 @@ map g# <Plug>(incsearch-nohl-g#)
 
 
 
-" let g:formatdef_eslint = '"eslint_d --stdin --fix-to-stdout --cache"'
-" let g:formatters_javascript = ['eslint']
-" let g:autoformat_verbosemode=1
-" augroup fmt
-"   autocmd!
-"   autocmd BufWritePre * Neoformat
-" augroup END
 autocmd BufWritePre *.{js,jsx,ts,tsx} ALEFix
-
-" let g:neoformat_enabled_javascript = ['eslint_d']
-" let g:neoformat_enabled_jsx = ['eslint_d']
-" let g:neoformat_enabled_js = ['eslint_d']
-" let g:neoformat_enabled_html = ['tidy']
-
-" autocmd FileType javascript setlocal formatprg=prettier_dnc\ --local-only\ --pkg-conf\ --fallback
-" autocmd BufWritePre,TextChanged,InsertLeave *.jsx Neoformat
-
-" Use formatprg when available
-" let g:neoformat_try_formatprg = 1
-" https://github.com/sbdchd/neoformat/issues/25
-" let g:neoformat_only_msg_on_error = 1
-
-
-" let g:neomake_error_sign = {
-"       \ 'text': '✗',
-"       \ 'texthl': 'ErrorMsg',
-"       \ }
-" hi MyWarningMsg ctermbg=3 ctermfg=0
-" let g:neomake_warning_sign = {
-"       \ 'text': '>>',
-"       \ 'texthl': 'MyWarningMsg',
-"       \ }
 
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tslint'],
 \   'sass': ['prettier']
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
-\   'typescript': ['tslint'],
+\   'typescript': ['eslint'],
 \   'sass': ['prettier']
 \}
 let g:ale_set_quickfix = 1
 let g:ale_open_list = 1
-let g:ale_list_window_size = 10
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_lint_on_text_changed = 'never'
+let g:ale_list_window_size = 1
 
-" function! Lint()
-"   if &filetype =~ 'javascript'
-"     Neomake eslint --fix
-"   else
-"     Neomake
-"   end
-" endfunction
-"
-" augroup lint_events
-"   autocmd!
-"   autocmd BufWritePost * call Lint()
-" augroup end
-
-" function! neoformat#formatters#javascript#prettiereslint() abort
-"     return {
-"         \ 'exe': 'prettier-eslint',
-"         \ 'args': ['--stdin'],
-"         \ 'stdin': 1,
-"         \ }
-" endfunction
-
-" you can set your enabled makers globally (like below) or on the buffer level as part of an autocmd - see Neomake docs for details
-" let g:neomake_javascript_enabled_makers = ['prettiereslint']
-" let g:neomake_html_enabled_makers = ['tidy', 'jsbeautify']
-" let g:neomake_php_enabled_makers = ['tidy', 'jsbeautify']
-" load local eslint in the project root
-" modified from https://github.com/mtscout6/syntastic-local-eslint.vim
-" let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-" let g:neomake_javascript_eslint_exe = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-"  let g:neomake_javascript_eslint_exe =
-" when switching/opening a JS buffer, set neomake's eslint path, and enable it as a maker
-" au BufEnter *.js let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-"
 let g:used_javascript_libs = 'd3,react'
 function! GotoJump()
   jumps

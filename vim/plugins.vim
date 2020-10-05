@@ -6,6 +6,9 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'jason0x43/vim-js-indent'
+Plug 'Quramy/vim-js-pretty-template'
 
 " colors
 Plug 'Lokaltog/vim-distinguished'
@@ -27,9 +30,9 @@ Plug 'rakr/vim-two-firewatch'
 Plug 'rakr/vim-one'
 Plug 'lifepillar/vim-solarized8'
 Plug 'trevordmiller/nova-vim'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 
-Plug 'roxma/nvim-cm-tern', {'do': 'npm install'}
+" Plug 'roxma/nvim-cm-tern', {'do': 'npm install'}
 
 
 Plug 'blueyed/vim-diminactive'
@@ -64,6 +67,7 @@ Plug 'ervandew/supertab'
 
 Plug 'mbbill/undotree'
 Plug 'vim-scripts/restore_view.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh' }
 " Plug 'accelerate-smooth-scroll'
 
 Plug 'rbong/vim-vertical'
@@ -105,6 +109,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'gavocanov/vim-js-indent'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Plug 'peitalin/vim-jsx-typescript'
 
 " Plug 'othree/yajs.vim'
@@ -128,6 +133,11 @@ Plug 'tpope/vim-unimpaired'
 " Plug 'scrooloose/syntastic'
 " Plug 'benekastah/neomake'
 Plug 'w0rp/ale'
+" Plug 'neomake/neomake'
+
+" Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+
 Plug 'romainl/vim-qf'
 " Plug 'blueyed/vim-qf_resize'
 Plug 'othree/fecompressor.vim'
@@ -179,6 +189,8 @@ Plug 'chrisbra/Colorizer'
 
 " ultisnips start, not working yet
 Plug 'SirVer/ultisnips'
+Plug 'vim-scripts/Rename2'
+
 
 " ES2015 code snippets (Optional)
 Plug 'epilande/vim-es2015-snippets'
@@ -201,15 +213,20 @@ Plug 'Chiel92/vim-autoformat'
 " Plug 'einars/js-beautify'
 " Plug 'junegunn/rainboear; rspec
 
-Plug 'edkolev/tmuxline.vim'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'benmills/vimux'
-Plug 'jgdavey/tslime.vim'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'tmux-plugins/vim-tmux'
+" Plug 'benmills/vimux'
+" Plug 'jgdavey/tslime.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'coc-extensions/coc-svelte'
 
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'rhysd/clever-f.vim'
+Plug 'leafOfTree/vim-svelte-plugin'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 
 " Plug 'mhinz/vim-startify'
 " Plug 'millermedeiros/vim-esformatter'
